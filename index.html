@@ -1,0 +1,713 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>凌晨4點、於理想鄉[all]_log</title>
+<style type="text/css">
+
+* { box-sizing: border-box; }
+body {
+	margin: 0 auto;
+	padding: 0;
+	font-size: 0.9rem;
+	color: #666;
+}
+header {
+	margin: 0;
+	background: #fff;
+	width: 100%;
+	position:fixed;
+	border-bottom: 1px solid #999;
+	padding: 6px 0;
+	color: #8A8A8A;
+}
+main { display: flex; margin: 0 auto; }
+#text { width: 1100px; margin: 50px auto 0; }
+footer { margin: 10px; height: 20px; font-size: 0.7rem;  text-align: right;}
+footer a { color: #aaa; text-decoration: none;}
+footer a:hover { color: #999 }
+
+h2 {
+	font-size: 0.9rem;
+	margin: 20px 0 8px 0;
+	border-left: 5px solid #000;
+	padding-left: 10px;
+}
+.nameList h2 { margin-top: 50px; }
+
+input[type=checkbox] {
+	transform: scale(1.3);
+	margin: 10px 8px 10px 3px;
+}
+dl {
+	display: flex;
+	flex-wrap: wrap;
+	border-bottom: 1px solid #e0e0e0;
+	margin: 0;
+}
+dt {
+	width: 18%;
+	padding: 0 10px 0 10px;
+	margin: 5px 0 5px 0;
+	font-size: 0.75rem;
+	text-align: right;
+	display: block;
+	border-right: dotted 1px #888;
+}
+dd {
+	width: 80%;
+	padding: 0 5px 0 10px;
+	margin: 5px 0 5px 0;
+	white-space: pre-wrap;
+	overflow-wrap: break-word;
+}
+
+.tab {
+	border-top: 1px solid #e0e0e0;
+	z-index: -1;
+	text-align: right;
+	margin-bottom: 0;
+	margin-top: 0;
+	padding-top: -1px;
+	position: relative;
+}
+.tab span {
+	display: inline-block;
+	border-bottom: 1px solid #e0e0e0;
+	border-left: 1px solid #e0e0e0;
+	background: #f0f0f0;
+	font-size: 0.75rem;
+	color: #666;
+	padding: 2px 6px 0 8px;
+	border-radius: 0 0 0 12px;
+	margin-top: -1px;
+}
+
+/*------------------------------
+ ハンバーガーメニュー        -*/
+
+header .hcenter {
+	max-width: 1200px;
+	display: flex;
+	margin: 0 10px;
+}
+header h1 {
+	order: 2;
+	margin: 5px 0 0 80px;
+	padding-top: 2px;
+	padding-left:10px;
+	border-left: 6px solid;
+	height: 18px;
+	line-height: 1;
+	font-size: 1.1rem;
+}
+.drawer-hidden { display: none; }
+.drawer { order: 1; }
+.drawer-open {
+	display: flex;
+	height: 28px;
+	width: 26px;
+	align-items: center;
+	position: relative;
+	z-index: 100;
+	cursor: pointer;
+	color: #8A8A8A;
+}
+.drawer-open .menusub {
+	padding-left: 32px;
+	padding-top: 2px;
+	font-size: 1rem;
+	font-weight: bold;
+}
+.drawer-open span.menubtn,
+.drawer-open span.menubtn:before,
+.drawer-open span.menubtn:after {
+	content: '';
+	display: block;
+	height: 3px;
+	width: 25px;
+	border-radius: 3px;
+	background: #8A8A8A;
+	transition: 0.5s;
+	position: absolute;
+	margin: 0 0 0 auto;
+	text-align: right;
+}
+
+/* アイコン */
+.drawer-open span.menubtn:before { bottom: 8px;}
+.drawer-open span.menubtn:after { top: 8px;}
+#drawer-check:checked ~ .drawer-open span.menubtn {
+	background: rgba(255, 255, 255, 0);
+}
+#drawer-check:checked ~ .drawer-open span.menubtn::before {
+	bottom: 0;
+	transform: rotate(45deg);
+}
+#drawer-check:checked ~ .drawer-open span.menubtn::after {
+	top: 0;
+	transform: rotate(-45deg);
+}
+
+/* 中身 */
+.drawer-content {
+	width: 280px;
+	height: 100%;
+	position: fixed;
+	top: 0;
+	left: -280px;
+	z-index: 99;
+	background: rgba(0,0,0,0.75);
+	transition: all .3s;
+	padding-left: 23px;
+	padding-top: 80px;
+	color: #fff;
+	overflow-y: auto;
+}
+#drawer-check:checked ~ .drawer-content {
+	left: 0;
+}
+.drawer-content ul { padding-left:0; }
+.drawer-content ul li { list-style:none; }
+
+
+/*------------------------------
+ 個別設定
+------------------------------*/
+.tc0 { background-color: rgb(232, 232, 232); margin-left: 10%; font-size: 0.8rem}
+.tc1 { background-color: rgb(255, 255, 255)}
+.tc2 { background-color: rgb(227, 248, 235)}
+.tc3 { background-color: rgb(232, 245, 251)}
+.tc4 { background-color: rgb(255, 255, 255)}
+.nc0 dt { color: rgb(136, 136, 136) }  /* 布炵 */
+.nc1 dt { color: rgb(136, 136, 136) }  /* KP赤Seki */
+.nc2 dt { color: rgb(255, 193, 7) }  /* 桃樂亭 芳司 */
+.nc3 dt { color: rgb(217, 87, 87) }  /* 生川 愛晴 */
+.nc4 dt { color: rgb(136, 136, 136) }  /* 女子A */
+.nc5 dt { color: rgb(136, 136, 136) }  /* 女子B */
+.nc6 dt { color: rgb(0, 188, 212) }  /* 陌生男子 */
+.nc7 dt { color: rgb(136, 136, 136) }  /* system */
+.nc8 dt { color: rgb(0, 188, 212) }  /* 水無月 */
+
+
+.C, .S, .SU, .SP { color: #2196F3; }
+.F, .FA { color: #F50057; }
+
+/*------------------------------
+ レスポンシブ
+------------------------------*/
+@media screen and (max-width:1100px) {
+	#list { display: none; }
+	#text { width: 90%; }
+}
+
+@media screen and (max-width:810px) {
+	body { font-size: 0.85rem; }
+	#list { display: none; }
+	#text { width: 100%; padding: 0 5px; }
+	header h1 { font-size: 1rem; margin-left: 10px; padding-left: 0; border-left: 0; padding-top: 4px; }
+	.drawer-open .menusub { display: none; }
+}
+
+</style>
+</head>
+<body>
+<header>
+	<div class="hcenter">
+		<h1>凌晨4點、於理想鄉[all]_log</h1>
+		<div class="drawer">
+			<input type="checkbox" id="drawer-check" class="drawer-hidden">
+			<label for="drawer-check" class="drawer-open">
+				<span class="menusub">MENU</span>
+				<span class="menubtn"></span>
+			</label>
+			<setction class="drawer-content">
+				<form autocomplete="off">
+					<div class="tabList">
+						<h2>タブ</h2>
+						<ul>
+							<li><label><input id=tc0 class="select_t" type="checkbox" checked>雑談</li></label>
+							<li><label><input id=tc1 class="select_t" type="checkbox" checked>メイン</li></label>
+							<li><label><input id=tc2 class="select_t" type="checkbox" checked>情報</li></label>
+							<li><label><input id=tc3 class="select_t" type="checkbox" checked>紀錄</li></label>
+							<li><label><input id=tc4 class="select_t" type="checkbox" checked>背景</li></label>
+
+						</ul>
+					</div>
+					<div class="nameList">
+						<h2>発言者</h2>
+						<ul>
+							<li style ="color:rgb(136, 136, 136);"><label><input id="nc0" class="select_n" type="checkbox" checked>布炵</li></label>
+							<li style ="color:rgb(136, 136, 136);"><label><input id="nc1" class="select_n" type="checkbox" checked>KP赤Seki</li></label>
+							<li style ="color:rgb(255, 193, 7);"><label><input id="nc2" class="select_n" type="checkbox" checked>桃樂亭 芳司</li></label>
+							<li style ="color:rgb(217, 87, 87);"><label><input id="nc3" class="select_n" type="checkbox" checked>生川 愛晴</li></label>
+							<li style ="color:rgb(136, 136, 136);"><label><input id="nc4" class="select_n" type="checkbox" checked>女子A</li></label>
+							<li style ="color:rgb(136, 136, 136);"><label><input id="nc5" class="select_n" type="checkbox" checked>女子B</li></label>
+							<li style ="color:rgb(0, 188, 212);"><label><input id="nc6" class="select_n" type="checkbox" checked>陌生男子</li></label>
+							<li style ="color:rgb(136, 136, 136);"><label><input id="nc7" class="select_n" type="checkbox" checked>system</li></label>
+							<li style ="color:rgb(0, 188, 212);"><label><input id="nc8" class="select_n" type="checkbox" checked>水無月</li></label>
+
+						</ul>
+					</div>
+				</form>
+			</section>
+		</div>
+	</div>
+</header>
+
+<main>
+<section id="text">
+	<p class="tc0 tab"><span>雑談</span></p>
+	<dl class="tc0 nc0"><dt>布炵</dt><dd>(一進來就大尖叫(幹</dd></dl>
+	<dl class="tc0 nc0"><dt>布炵</dt><dd>好瑟…………（跌倒進浴缸</dd></dl>
+	<dl class="tc0 nc1"><dt>KP赤Seki</dt><dd>（貼玻璃看（好</dd></dl>
+	<p class="tc1 tab"><span>メイン</span></p>
+	<dl class="tc1 nc1"><dt>KP赤Seki</dt><dd>初夏已過，來到正值盛夏的7月某個星期五。<br>時間為，《晚上11點46分》</dd></dl>
+	<dl class="tc1 nc1"><dt>KP赤Seki</dt><dd>該睡覺，還是該先做好明天的準備呢？<br>當你正這麼想著時，一通電話聲響起。</dd></dl>
+	<dl class="tc1 nc2"><dt>桃樂亭 芳司</dt><dd>夏夜的來臨，蟬聲也隨著入夜而停了下來，時間已經不早了，一頭金髮沐浴在月光下，似乎還沒有準備休息，在照顧好寵物之後，準備要做下一次表演的練習時，電話鈴聲打斷了他的動作，芳司瞥了一眼來電號碼，確認是誰之後再決定要不要接起。</dd></dl>
+	<dl class="tc1 nc1"><dt>KP赤Seki</dt><dd>若查看來電顯示，會發現是愛晴打來的。這個時間有什麼事呢。</dd></dl>
+	<dl class="tc1 nc2"><dt>桃樂亭 芳司</dt><dd>他看到名字之後，便微微笑沒有猶豫就接起電話。<br>「生川先生這時間怎麼打電話過來了呢？」</dd></dl>
+	<dl class="tc1 nc1"><dt>KP赤Seki</dt><dd>你接起電話回應。然而，電話另一端無聲無息。</dd></dl>
+	<dl class="tc1 nc1"><dt>KP赤Seki</dt><dd>等待一陣子後，耳邊才傳來聲音。雖然相當微弱，但你絕不可能認錯，那正是愛晴的聲音。</dd></dl>
+	<dl class="tc1 nc3"><dt>生川 愛晴</dt><dd>「喂⋯⋯你去哪裡了？」</dd></dl>
+	<dl class="tc1 nc3"><dt>生川 愛晴</dt><dd>「過來我這裡。」</dd></dl>
+	<dl class="tc1 nc1"><dt>KP赤Seki</dt><dd>〈靈感〉</dd></dl>
+	<dl class="tc1 nc2"><dt>桃樂亭 芳司</dt><dd class="SU">CCB&lt;=90 &lt;靈感IDEA&gt; (1D100&lt;=90) ＞ 66 ＞ 成功</dd></dl>
+	<dl class="tc1 nc1"><dt>KP赤Seki</dt><dd>愛晴的狀況很不對勁。你懷疑他是否發生了什麼事。</dd></dl>
+	<dl class="tc1 nc2"><dt>桃樂亭 芳司</dt><dd>「……？」先是一段沉默後，接著是微弱的聲響，使得芳司感到有些困惑，他楞了楞，停下了手上的動作，將落語的東西都放在了一旁專心在電話之中。<br><br>「……生川先生，你這樣說是想我了嗎？」他思索了一會，小小吸了一口氣後像平時一樣說出調侃的話試探愛晴的狀況。</dd></dl>
+	<dl class="tc1 nc1"><dt>KP赤Seki</dt><dd>你呼喚著電話另一端的他。但是電話在沉默數秒之後，被單方面掛斷了。</dd></dl>
+	<dl class="tc1 nc1"><dt>KP赤Seki</dt><dd>在電話掛斷前〈聆聽〉</dd></dl>
+	<dl class="tc1 nc2"><dt>桃樂亭 芳司</dt><dd class="FA">CCB&lt;=72 &lt;聆聽&gt; (1D100&lt;=72) ＞ 74 ＞ 失敗</dd></dl>
+	<dl class="tc1 nc1"><dt>KP赤Seki</dt><dd>愛晴突如其來的電話。電話另一頭令人不安的氣息。<br>再加上時間已經接近午夜，你自然會擔心他的安危吧。<br>而被捲入無數神話事件的你，更是感覺到一股不祥的預感。</dd></dl>
+	<dl class="tc1 nc2"><dt>桃樂亭 芳司</dt><dd>「……生川先生？」即使朝另一頭喊到，得到的也只有電話切斷的聲音，芳司不禁皺起眉頭望向了電話，不安爬上心頭，火焰被吹熄、愛晴倒在自己眼前的畫面不斷地在腦海中浮現，他擔心的握緊手機，很快地站起身子。<br><br>沒能顧上太多，他僅僅披上一件薄外套後，立刻叫了計程車，準備前往愛晴的住處，撥打著愛晴的電話的動作也沒有停過。</dd></dl>
+	<dl class="tc1 nc1"><dt>KP赤Seki</dt><dd>s1d2 (1D2) ＞ 2</dd></dl>
+	<dl class="tc1 nc1"><dt>KP赤Seki</dt><dd>沒有繼續待在家裡的理由。<br><br>你試圖撥打電話叫車，雖然這個時間點的車資相當高昂，但你顧不得這麼多。<br><br>然而，因為現在是珍貴的週五夜間，下班應酬或出去玩的人陸陸續續歸家，車行客服回覆你，下一台車子還需要數十分鐘才能抵達你的公寓，遠比你親自走路過去還要久。</dd></dl>
+	<dl class="tc1 nc2"><dt>桃樂亭 芳司</dt><dd>見車子的時間過長，芳司也沒有閒情逸致去等待，他便綁起頭髮，換上好走的鞋子後，打算自己走過去。</dd></dl>
+	<dl class="tc1 nc1"><dt>KP赤Seki</dt><dd>現在正值夏季，你僅披上一件薄薄的外套、綁好頭髮，迅速地做好準備，踏出家門。</dd></dl>
+	<dl class="tc1 nc1"><dt>KP赤Seki</dt><dd>就這樣，身為探索者的你，獨自一人踏入夜晚的街道。</dd></dl>
+	<dl class="tc1 nc1"><dt>KP赤Seki</dt><dd>雖然入夜後溫度轉涼，但殘留暑氣的夏夜街道仍充滿著濕氣。<br>拂過臉頰的風也相當溫暖。但是你卻從這陣風裡，感受到些許沁涼與舒適。時間為，《凌晨0點18分》</dd></dl>
+	<p class="tc2 tab"><span>情報</span></p>
+	<dl class="tc2 nc1"><dt>KP赤Seki</dt><dd>可以探索／會經過的地點<br><br>車站／公園／住宅區<br>這些地點從近至遠排序，車站最近，因此你或許會從車站開始探索。</dd></dl>
+	<p class="tc1 tab"><span>メイン</span></p>
+	<dl class="tc1 nc2"><dt>桃樂亭 芳司</dt><dd>雖然芳司焦急地邁開步伐，不過迎接他的夜風吹拂在臉龐，溫和的沖淡了他的不安，將焦慮降溫了一些，他才有一些餘力能留意周遭的景色。<br><br>這時間不知道還有沒有車，不過這個時間段沒有什麼人了吧，心理這麼想著他望向一旁的車站。</dd></dl>
+	<dl class="tc1 nc1"><dt>KP赤Seki</dt><dd>你在微風的陪伴下來到車站。雖然已經過了午夜，但仍能見到等著搭電車回家的上班族，以及像是玩樂或打工結束的年輕人正要回家。</dd></dl>
+	<dl class="tc1 nc1"><dt>KP赤Seki</dt><dd>〈偵查〉</dd></dl>
+	<dl class="tc1 nc2"><dt>桃樂亭 芳司</dt><dd class="SU">CCB&lt;=80 &lt;偵查&gt; (1D100&lt;=80) ＞ 26 ＞ 成功</dd></dl>
+	<dl class="tc1 nc1"><dt>KP赤Seki</dt><dd>在你等待紅燈轉綠的時候，兩名女子映入眼簾。雖然穿著便服，但那稚氣未脫的模樣，讓人感覺應該是大學生。<br>其中高冷的女性，正向氣質可愛的女性提起這般對話。</dd></dl>
+	<dl class="tc1 nc4"><dt>女子A</dt><dd>「我交往的戀人最近有點奇怪。」</dd></dl>
+	<dl class="tc1 nc5"><dt>女子B</dt><dd>「欸、怎麼了？」</dd></dl>
+	<dl class="tc1 nc4"><dt>女子A</dt><dd>「怎麼說呢，只要我和誰見面他就會一直問東問西，還會說什麼『只看著我』之類的話。」</dd></dl>
+	<dl class="tc1 nc5"><dt>女子B</dt><dd>「啊～那是佔有慾啦。不想把你讓給任何人呢。」</dd></dl>
+	<dl class="tc1 nc4"><dt>女子A</dt><dd>「但是，我交往前完全沒有想到，他會對我有這種想法⋯⋯」</dd></dl>
+	<dl class="tc1 nc5"><dt>女子B</dt><dd>「因為人對他人的感情本來就會改變的嘛。不論是誰都會有佔有慾的，而且這代表他很在乎你啊！所以就別計較了吧。」</dd></dl>
+	<dl class="tc1 nc2"><dt>桃樂亭 芳司</dt><dd>沒想到這時間了，街道上還是車水馬龍，而雖然並沒有打算偷聽，兩名女性談論的戀愛話題還是傳到了芳司耳裡，雖然不以為意，不過戀人變得奇怪這一點，讓他有些在意，腦中不禁浮現了愛晴，但畢竟不是戀人關係，他搖搖頭將其拋諸腦後，快步離開了車站附近。</dd></dl>
+	<dl class="tc1 nc1"><dt>KP赤Seki</dt><dd>當你準備要離開車站時，身後突然有人叫住了你。<br>那聲音的主人是一位男性，身高很高，帶著某種奇特的氣質。</dd></dl>
+	<dl class="tc1 nc6"><dt>陌生男子</dt><dd>「小哥，晚安啊。真是個不錯的夜晚呢。」</dd></dl>
+	<dl class="tc1 nc6"><dt>陌生男子</dt><dd>「在做什麼呢？話說今天晚上真的很熱啊。你覺得熱的天氣怎麼樣？我是滿討厭的就是了。」</dd></dl>
+	<dl class="tc1 nc2"><dt>桃樂亭 芳司</dt><dd>「晚安呢。」被陌生的聲音叫住而短暫停下了腳步，芳司轉頭端詳了一會對方後，微微笑客氣地回覆招呼。<br><br>「我覺得熱的天氣也有優點，不會有好惡之分呢。」他沒有說更多，只是簡單的回答了問題，還想著愛晴，沒有打算要跟對方深聊的意思。</dd></dl>
+	<dl class="tc1 nc6"><dt>陌生男子</dt><dd>「也是呢～能在這麼熱的天碰巧看見像小哥這樣好看的人，真的很幸運呢。」</dd></dl>
+	<dl class="tc1 nc6"><dt>陌生男子</dt><dd>「小哥跟我一起逛逛吧。怎麼樣？」</dd></dl>
+	<dl class="tc1 nc2"><dt>桃樂亭 芳司</dt><dd>「哎呀，這話是我要說的。」沒想到對方似乎是來搭訕的，他沒有猶豫，只是思考了一下用詞後勾起微笑回應。<br><br>「可惜我沒有那麼幸運能跟您逛逛，很不巧我現在剛好有事情要去處理呢。」</dd></dl>
+	<dl class="tc1 nc6"><dt>陌生男子</dt><dd>「真的？好開心啊～居然被小哥這樣說。我這個人很容易動情的呢。」</dd></dl>
+	<dl class="tc1 nc6"><dt>陌生男子</dt><dd>「這個、就送給這樣的你吧。」</dd></dl>
+	<dl class="tc1 nc1"><dt>KP赤Seki</dt><dd>他阻止了你想要離開的步伐，強行抓住你的右手臂，將一枚金色戒指套到你右手的無名指上。</dd></dl>
+	<dl class="tc1 nc1"><dt>KP赤Seki</dt><dd>可以對戒指〈克蘇魯神話〉或〈幸運〉</dd></dl>
+	<dl class="tc1 nc2"><dt>桃樂亭 芳司</dt><dd>CCB&lt;=80 &lt;幸運LUCK&gt; (1D100&lt;=80) ＞ 9 ＞ 特殊</dd></dl>
+	<dl class="tc1 nc1"><dt>KP赤Seki</dt><dd>你覺得這個戒指散發著奇怪的氛圍。</dd></dl>
+	<dl class="tc1 nc2"><dt>桃樂亭 芳司</dt><dd>「……。」突然被塞了一枚戒指到手上，而且從上面感受到了奇妙的感覺，他不禁微微皺起了眉頭，對於陌生男子突然的舉動愣了愣，下一秒他才收拾好訝異，微微笑。<br><br>「雖然您這樣說我很開心，但不巧我已經有戀人了，沒辦法收下這麼貴重的戒指呢。」說著的同時，芳司準備將戒指從無名指上拔下來。</dd></dl>
+	<dl class="tc1 nc1"><dt>KP赤Seki</dt><dd>若試圖將戒指拔下，會發現怎麼樣都拿不下來。<br><br>男子看著你訝異的模樣，滿意地露出悠然的微笑。即使你說自己已有戀人，也似乎不減他的興致。</dd></dl>
+	<dl class="tc1 nc6"><dt>陌生男子</dt><dd>「比起那個人，這個更適合你喔。你從此以後就是我的東西了。」</dd></dl>
+	<dl class="tc1 nc6"><dt>陌生男子</dt><dd>「我把我的心意都放進那枚戒指裡了，所以要好好珍惜喔。是給你的特別禮物。」</dd></dl>
+	<dl class="tc1 nc6"><dt>陌生男子</dt><dd>「不過、我還得去別的地方，所以晚點再去找你玩喔～」</dd></dl>
+	<dl class="tc1 nc1"><dt>KP赤Seki</dt><dd>他自顧自地這麼說著，便離開了。</dd></dl>
+	<p class="tc2 tab"><span>情報</span></p>
+	<dl class="tc2 nc1"><dt>KP赤Seki</dt><dd>◆金色的戒指<br><br>閃爍著金光的戒指。穩穩地套在你右手的無名指上，不知為何拔不下來。<br>含有30MP。</dd></dl>
+	<p class="tc1 tab"><span>メイン</span></p>
+	<dl class="tc1 nc2"><dt>桃樂亭 芳司</dt><dd>「……請等一下——」還沒有等人說完，陌生男子就已經擅自消失在視線中，芳司嘆了一口氣轉頭端詳著那枚像是緊緊鎖在自己手上的戒指，他緊皺著眉頭，思索著該如何是好，越想不滿的情緒就堆得越高。<br><br>總感覺自己被當作是他人的東西這情況已經發生許多次，而一切的開端都是因為那個厄運，沒錯、今天也是因為他才出這個門的，如果對方沒有變得奇怪，自己也不用如此擔心，最終芳司的腦海中浮現的還是令人不滿的那張臉，他想到這裡便繼續邁開步伐，往愛晴的家前進。</dd></dl>
+	<dl class="tc1 nc1"><dt>KP赤Seki</dt><dd>這個容易吸引各式各樣的人們的體質，究竟是禍是福呢。徐徐吹過臉側的微風已經無法撫平你的情緒，你抱著困惑與不悅，繼續走向你踏出家門的目的地。</dd></dl>
+	<dl class="tc1 nc1"><dt>KP赤Seki</dt><dd>經過公園，深夜的此處空無一人。路燈悄悄照亮著無人遊玩的遊樂設施。</dd></dl>
+	<dl class="tc1 nc1"><dt>KP赤Seki</dt><dd>〈偵查〉</dd></dl>
+	<dl class="tc1 nc2"><dt>桃樂亭 芳司</dt><dd class="SU">CCB&lt;=80 &lt;偵查&gt; (1D100&lt;=80) ＞ 52 ＞ 成功</dd></dl>
+	<dl class="tc1 nc1"><dt>KP赤Seki</dt><dd>你在長椅附近發現一張便條紙。上面似乎手寫了什麼。</dd></dl>
+	<dl class="tc1 nc2"><dt>桃樂亭 芳司</dt><dd>與剛才車水馬龍的車站形成對比，公園在這樣子的深夜，沒有人在此處逗留，或許是因為剛剛遇到了奇怪的男子，現在一個人獨處反而能讓他放鬆一些些。<br><br>目光掃過了遊樂設施，最後在長椅附近停駐，他瞇起眼睛湊了過去，想看看在公園，這樣的便條紙上會寫些甚麼。</dd></dl>
+	<dl class="tc1 nc1"><dt>KP赤Seki</dt><dd>湊近一看，你發現那是某人的筆記以及一段咒文。為什麼會留在這樣的地方呢？</dd></dl>
+	<p class="tc2 tab"><span>情報</span></p>
+	<dl class="tc2 nc1"><dt>KP赤Seki</dt><dd>◆退散神格<br><br>此咒文可以退散神格。<br>以神格擁有的POW20為基準分配1MP，即以基礎成功率5%開啟退散之道。每追加1MP可再增加5%成功率。<br>退散神格不需要進行儀式，可在任何時間點、地點施行。<br><br>花費：每人1點以上的MP<br>所需回合數：提供MP的每位參與者需花費1回合</dd></dl>
+	<p class="tc1 tab"><span>メイン</span></p>
+	<dl class="tc1 nc2"><dt>桃樂亭 芳司</dt><dd>「……？」完全沒有想過會是這方面的筆記，他感到有些困惑，不過根據以前經歷過的事件得到的經驗，這種咒文或許在哪裡能派上用場，說不定也能幫助自己擺脫被強加在無名指上的金色戒指。<br><br>想到這哩，芳司便拿出手機，打算把紙上的內容拍下來。</dd></dl>
+	<dl class="tc1 nc1"><dt>KP赤Seki</dt><dd>你拍下上頭的內容，存入滿是落語筆記的相簿之中。似乎也暗示著你平凡的日常逐漸染上超現實的色彩。</dd></dl>
+	<dl class="tc1 nc1"><dt>KP赤Seki</dt><dd>要離開公園時〈幸運〉</dd></dl>
+	<dl class="tc1 nc2"><dt>桃樂亭 芳司</dt><dd class="SU">CCB&lt;=80 &lt;幸運LUCK&gt; (1D100&lt;=80) ＞ 27 ＞ 成功</dd></dl>
+	<dl class="tc1 nc1"><dt>KP赤Seki</dt><dd>離開公園之前，你發現公園的樹上結了霜。明明是夏天，這是怎麼一回事。</dd></dl>
+	<dl class="tc1 nc2"><dt>桃樂亭 芳司</dt><dd>拍下內容讓心裡更踏實一點，轉頭準備離開時目光瞥到了樹上閃過的亮光，他定睛一看才發現了攀附在樹木上的霜。<br><br>「這是……結霜了？」芳司湊近樹木仔細觀察，即使在夜晚，夏天的溫度還是令人感到濕熱的，然而樹木上的霜卻像是其他季節一樣，他有些好奇的伸手輕輕碰觸冰的表面。</dd></dl>
+	<dl class="tc1 nc1"><dt>KP赤Seki</dt><dd>你伸出溫熱的指尖觸碰冰霜，感覺一絲冷意自你的指腹擴散，輕易使它化成了水。毫無疑問，這的確是因為低溫而結成的固狀水。</dd></dl>
+	<dl class="tc1 nc2"><dt>桃樂亭 芳司</dt><dd>「……這裡也不冷呢。」芳司收回因霜融化而沾濕的手指，用手帕擦拭，繼續端詳了幾眼樹木後，便轉身準備離開，打算之後再來研究，繼續往愛晴家的方向前進。</dd></dl>
+	<dl class="tc1 nc1"><dt>KP赤Seki</dt><dd>你離開公園，前往愛晴居住的住宅區。</dd></dl>
+	<dl class="tc1 nc1"><dt>KP赤Seki</dt><dd>時間為，《凌晨1點27分》<br>這個住宅區，想必在白天充斥著孩子的聲音，與母親們的談笑聲。但此刻只有寂靜籠罩這個地方。</dd></dl>
+	<dl class="tc1 nc1"><dt>KP赤Seki</dt><dd>你繼續向前走，接著注意到了。住宅區常見的兒童遊樂廣場已被冰包覆。<br>溜滑梯被冰封而碎裂，曾經是鞦韆的物品被凍得變形。</dd></dl>
+	<dl class="tc1 nc1"><dt>KP赤Seki</dt><dd>然後，你看到了這一切的元凶。</dd></dl>
+	<dl class="tc1 nc1"><dt>KP赤Seki</dt><dd>那巨大的身軀像是過胖的白色蛆蟲，體型比象海豹更加龐大，將廣場的遊樂設施壓成碎片。<br>它身在被結凍的廣場中央，沒有眼球的空洞裡一滴、一滴地流出像是鮮血的紅色顆粒，毫無止盡。</dd></dl>
+	<dl class="tc1 nc1"><dt>KP赤Seki</dt><dd>這頭白色蛆蟲的怪物雖然沒有眼睛，但卻好好捕捉到了你的存在。</dd></dl>
+	<dl class="tc1 nc1"><dt>KP赤Seki</dt><dd>舊日支配者「魯利姆・夏科洛斯」，將其威脅具象化的怪物，對你散發出明確的敵意。SANc (1D4/2D8)</dd></dl>
+	<dl class="tc1 nc2"><dt>桃樂亭 芳司</dt><dd>CCB&lt;=82 SAN (1D100&lt;=82) ＞ 9 ＞ 特殊</dd></dl>
+	<dl class="tc1 nc2"><dt>桃樂亭 芳司</dt><dd>1d4 (1D4) ＞ 1</dd></dl>
+	<dl class="tc1 nc7"><dt>system</dt><dd>[ 桃樂亭 芳司 ] SAN : 82 → 81</dd></dl>
+	<dl class="tc1 nc1"><dt>KP赤Seki</dt><dd>當你感覺與怪物對上視線的瞬間，你注意到了。愛晴正倒在怪物的身旁。<br>那個身姿被怪物落下的似血液體，染紅了臉與身軀。</dd></dl>
+	<dl class="tc1 nc1"><dt>KP赤Seki</dt><dd>〈進入與魯利姆・夏科洛斯的戰鬥〉</dd></dl>
+	<dl class="tc1 nc1"><dt>KP赤Seki</dt><dd>芳司的回合</dd></dl>
+	<dl class="tc1 nc2"><dt>桃樂亭 芳司</dt><dd>不只是公園裡的樹木，隨著越來越接近住宅區，就越來越逼近寒意，彷彿已經離開了夏天，但要說是正常的冬天也極度不合理，被冰封住的遊樂廣場映入了眼簾，還沒來得及做些什麼，那本該部存在的詭異存在已經釋放了敵意。<br><br>或許是已經接連經歷了幾件離奇的事件，現在看到如此奇異的生物，芳司也沒有大驚失色，只是捏了一把冷汗，端詳著眼前的白色蛆蟲，與那空洞對視到的同時，他注意到了鮮紅的液體底下埋沒了甚麼，是生川愛晴。</dd></dl>
+	<dl class="tc1 nc2"><dt>桃樂亭 芳司</dt><dd>意識到倒在地上的人正是自己尋找的愛晴，芳司差點喊出了聲音，而為了不驚動到那詭異存在，他將話語吞進肚，深吸一口氣，下定決心以自己為誘餌，誘導白色蛆蟲離開愛晴身旁，同時絞盡腦汁思索著解決辦法。<br><br>下一秒，他踩到了碎冰，芳司眨了眨眼，想到了在公園中的冰霜，以及那張退散神格的便條紙，他迅速拿出手機，開始唸起上面記載的咒文。</dd></dl>
+	<dl class="tc1 nc1"><dt>KP赤Seki</dt><dd>〈消耗戒指11MP，以及自身8MP〉<br>咒文成功率為100%，請擲骰</dd></dl>
+	<dl class="tc1 nc7"><dt>system</dt><dd>[ 桃樂亭 芳司 ] MP : 16 → 8</dd></dl>
+	<dl class="tc1 nc7"><dt>system</dt><dd>[ 桃樂亭 芳司 ] 金色戒指 : 30 → 19</dd></dl>
+	<dl class="tc1 nc2"><dt>桃樂亭 芳司</dt><dd class="SU">CCB&lt;=100 &lt;退散神格&gt; (1D100&lt;=100) ＞ 33 ＞ 成功</dd></dl>
+	<dl class="tc1 nc1"><dt>KP赤Seki</dt><dd>在你成功施放咒語的瞬間，蛆蟲的周遭散發出奇特的光芒，像是要將它吞噬一般愈漸擴大，籠罩住它龐大的身軀。如鮮血一般的紅液被寒風捲起，遊樂區的枝葉也被狂風吹得沙沙作響，在沙塵的侵襲下，你忍不住閉上雙眼。</dd></dl>
+	<dl class="tc1 nc1"><dt>KP赤Seki</dt><dd>當你再次睜開眼眸，住宅區已回歸平靜，留下一片狼籍。</dd></dl>
+	<dl class="tc1 nc2"><dt>桃樂亭 芳司</dt><dd>光芒吞噬著蛆蟲的瞬間，他也像是被抽乾了一樣力氣盡失，整個人有些站不穩，只能閉上眼蜷縮著身子不讓自己被寒風捲走，而回過神來周遭已經恢復了該有的平靜。<br><br>「……生川先生。」確認那不詳的存在已經消失後，芳司咬牙邊拖著虛弱的身子邊呼喊著名字，緩緩的走到了倒在地上的愛晴身旁，不安地想確認對方是否平安無事。</dd></dl>
+	<dl class="tc1 nc1"><dt>KP赤Seki</dt><dd>你踏出不穩的步伐，急急忙忙地來到愛晴身旁。他身穿外出服，全身浸泡在血泊之中，雖然還有呼吸，但似乎失去了意識。</dd></dl>
+	<dl class="tc1 nc1"><dt>KP赤Seki</dt><dd>就在此時，一道熟悉的聲音迴盪在寒氣籠罩的住宅區。</dd></dl>
+	<dl class="tc1 nc6"><dt>陌生男子</dt><dd>「喔、又見面了呢。這就是命運嗎？開玩笑的啦。」</dd></dl>
+	<dl class="tc1 nc6"><dt>陌生男子</dt><dd>「因為感覺你正在做什麼有趣的事，所以我就過來看看啦～難道是你把那傢伙驅散了嗎？我有點懶得再召喚一次呢。」</dd></dl>
+	<dl class="tc1 nc6"><dt>陌生男子</dt><dd>「話說回來，我好像還沒有自我介紹呢，我叫做水無月（みなづき）。流水的水、虛無的無、月亮的月，水無月。」</dd></dl>
+	<dl class="tc1 nc1"><dt>KP赤Seki</dt><dd>站在那裡的，是在車站相遇、強行替你戴上戒指的那名男子。</dd></dl>
+	<dl class="tc1 nc2"><dt>桃樂亭 芳司</dt><dd>芳司伸手輕輕摸著愛晴的臉龐，確認了還有呼吸後才放下心，他將身上的外套蓋在愛晴身上，把他擋在自己身後，這才有餘力面對在住宅區迴盪的聲音。<br><br>「敝姓桃樂亭，水無月先生……那東西是你召喚出來的嗎。」他戒備著眼前來歷不明的男人，思索了一下後換上了平時的笑容「不過幸好在夏天的炙熱下突然就蒸發了，不然有點嚇人呢。」</dd></dl>
+	<dl class="tc1 nc8"><dt>水無月</dt><dd>「沒錯喔。因為今年夏天不是異常的熱嗎？所以我想召喚出來的話會不會變涼一點呢～」<br><br>「突然蒸發？哈哈，你果然很有趣呢。」他邊說著邊慢慢走近你們，視線緊接著注意到你手上的戒指。</dd></dl>
+	<dl class="tc1 nc8"><dt>水無月</dt><dd>「不過，你把我送你的東西弄得破破爛爛的呢⋯⋯真是令人失望。」 他的語氣明顯染上冷意。</dd></dl>
+	<dl class="tc1 nc2"><dt>桃樂亭 芳司</dt><dd>見對方離兩人越來越近，他就更盡力的將愛晴藏匿起來，希望對方不會動什麼手腳。<br><br>「戒指？……哎呀，真不好意思，我可能沒那個能力保護好戒指呢，明明說好要珍惜的……果然水無月先生還是把戒指收回去吧？」雖然對方態度急轉直下，但芳司還是保持著鎮定，不如說如果能趁現在把戒指還回去對他來說更好。</dd></dl>
+	<dl class="tc1 nc8"><dt>水無月</dt><dd>「說的也是呢⋯⋯因為，那個昏過去的小哥、果然很不錯呢！我好像喜歡上他了！」</dd></dl>
+	<dl class="tc1 nc8"><dt>水無月</dt><dd>「既然你不想成為我的東西，那我就把小哥變成我的吧。」</dd></dl>
+	<dl class="tc1 nc1"><dt>KP赤Seki</dt><dd>說著說著，水無月輕易地繞過你尚未恢復完全的身體，單手將愛晴的頭摟向自己，食指輕點在他的額頭上。<br><br>接著，似乎開始詠唱聽不清內容的某種咒語。</dd></dl>
+	<dl class="tc1 nc8"><dt>水無月</dt><dd>「好了、這樣等他醒來時，就是我的東西了。」</dd></dl>
+	<dl class="tc1 nc8"><dt>水無月</dt><dd>「話說回來，這小哥的名字是什麼啊？你告訴我嘛。」</dd></dl>
+	<dl class="tc1 nc2"><dt>桃樂亭 芳司</dt><dd>「……。」一看見水無月正在對愛晴做些什麼，他頓時沒辦法控制自己心中的情緒，下意識就伸出手握住了對方的手臂，想要阻止對方的行動。<br><br>「水無月先生，這個人可能不行呢。」說著的同時手上的力道也加重了幾分，他壓著快要噴發的怒意繼續說道「戒指也是，你還是再去找找其他人送吧，水無月先生的條件應該能找到更好的。」雖然嘴上掛著笑容，但絲毫沒有笑意，也不打算要告訴對方愛晴的名字。</dd></dl>
+	<dl class="tc1 nc1"><dt>KP赤Seki</dt><dd>雖然你在中途抓住水無月的手，但他完全沒有受到絲毫影響，咒文就這麼被他詠唱完畢。<br><br>他見你似乎不打算放手，也興許是感受到你的怒意，而面露不解地望著你。</dd></dl>
+	<dl class="tc1 nc8"><dt>水無月</dt><dd>「恩～？啊、難道你跟小哥是戀人嗎？」</dd></dl>
+	<dl class="tc1 nc2"><dt>桃樂亭 芳司</dt><dd>「……。」一被水無月問到這個問題，芳司便頓了頓，腦袋轉動著該如何回答，他轉頭看了一眼還未清醒的愛晴後，才緩緩開口。<br><br>「我剛剛就說過有戀人了呢。」雖說不認為兩人的關係是如此，但是他這個回答，也有著愛晴是自己的人的意味在裡面。</dd></dl>
+	<dl class="tc1 nc1"><dt>KP赤Seki</dt><dd>水無月對於你的回應感到困惑，他接著雙手抱胸，露出一副在思考的模樣。</dd></dl>
+	<dl class="tc1 nc8"><dt>水無月</dt><dd>「看你的反應好像不是這麼一回事呢。嘛、雖然不管如何都無所謂。」</dd></dl>
+	<dl class="tc1 nc1"><dt>KP赤Seki</dt><dd>他接著動了動手臂，從衣服內側取出某樣東西。</dd></dl>
+	<dl class="tc1 nc8"><dt>水無月</dt><dd>「既然你那麼在意小哥，就把這個給你吧。」</dd></dl>
+	<dl class="tc1 nc1"><dt>KP赤Seki</dt><dd>取出來的物品，是一個白色的紙袋。</dd></dl>
+	<dl class="tc1 nc8"><dt>水無月</dt><dd>「原本是我要留著用的～但就由你來解開咒文吧。」<br>「你究竟有多在乎他，就讓我看看你的證明。」</dd></dl>
+	<dl class="tc1 nc8"><dt>水無月</dt><dd>「只要做得到的話，我就會收手喔。」</dd></dl>
+	<dl class="tc1 nc2"><dt>桃樂亭 芳司</dt><dd>「……？」芳司見對方想法有可以轉圜的餘地，便鬆開了握住的手，接過了白色的紙袋。<br><br>「我知道了，我會做的，做完之後水無月先生要說到做到呢。」他微微笑，瞥了一眼紙袋裡的東西，想看看是甚麼。</dd></dl>
+	<dl class="tc1 nc1"><dt>KP赤Seki</dt><dd>你接過紙袋並確認內容物，會發現裡頭裝著淡綠色的粉末，份量約占袋子的一半。</dd></dl>
+	<dl class="tc1 nc1"><dt>KP赤Seki</dt><dd>〈聆聽〉</dd></dl>
+	<dl class="tc1 nc2"><dt>桃樂亭 芳司</dt><dd>CCB&lt;=72 &lt;聆聽&gt; (1D100&lt;=72) ＞ 2 ＞ 決定性的成功/特殊</dd></dl>
+	<p class="tc3 tab"><span>紀錄</span></p>
+	<dl class="tc3 nc2"><dt>桃樂亭 芳司</dt><dd>聆聽大成功&gt;2</dd></dl>
+	<p class="tc1 tab"><span>メイン</span></p>
+	<dl class="tc1 nc1"><dt>KP赤Seki</dt><dd>你聞到乾淨又淡雅的清香。</dd></dl>
+	<dl class="tc1 nc2"><dt>桃樂亭 芳司</dt><dd>「水無月先生我有個疑問，這些粉末是要如何使用呢？」看著帶著清香的粉末，芳司有些困惑地望著水無月，或許是對這些香氣該用在哪裡並沒有想法，難道要像驅魔電影一樣，直接把粉末灑在愛晴身上？</dd></dl>
+	<dl class="tc1 nc8"><dt>水無月</dt><dd>「你很快就會知道的。沒有什麼是比劇透更無趣的事了吧～」</dd></dl>
+	<dl class="tc1 nc8"><dt>水無月</dt><dd>「感覺會有很有趣的發展呢，我很期待喔。要是你做不到的話，小哥就由我來接手了。」</dd></dl>
+	<dl class="tc1 nc1"><dt>KP赤Seki</dt><dd>水無月站起身子，隨意地揮了揮手，消失在路燈照不到的夜色深處。被寒意與寂靜支配的住宅區中，只剩下你與愛晴。</dd></dl>
+	<dl class="tc1 nc1"><dt>KP赤Seki</dt><dd>愛晴依然沒有醒來。他為什麼會變成這樣。<br>這些你難以理解又無法掌控的現狀，或許會使你自身體深處感到寒意以及惱怒吧。</dd></dl>
+	<dl class="tc1 nc1"><dt>KP赤Seki</dt><dd>〈靈感〉</dd></dl>
+	<dl class="tc1 nc2"><dt>桃樂亭 芳司</dt><dd class="SU">CCB&lt;=90 &lt;靈感IDEA&gt; (1D100&lt;=90) ＞ 52 ＞ 成功</dd></dl>
+	<dl class="tc1 nc1"><dt>KP赤Seki</dt><dd>繼續待在這裡也無濟於事。你認為應該先將愛晴帶回去。</dd></dl>
+	<dl class="tc1 nc2"><dt>桃樂亭 芳司</dt><dd>看著莫名得到的戒指與散發著芬芳的粉末，再加上不省人事的愛晴，雖然一切看似和平，但芳司心中已經亂成一團，一切被打亂的煩躁，對愛晴的擔心，以及不知道下一步該如何走的迷茫，都交雜在一起，使得他的煩躁停不下來，但不管怎麼說，不行動也不行，他嘆了一口氣，思索著該怎麼做。<br><br>「生川先生。」待寂靜將兩人包覆之後，他才轉身再次輕拍對方的臉頰，想嘗試喚醒對方。</dd></dl>
+	<dl class="tc1 nc1"><dt>KP赤Seki</dt><dd>你猶豫著該如何是好而停留在原處，並伸手輕拍愛晴沾滿鮮血的臉，輕易感覺到平時溫熱的肌膚，此時異常的冰冷。<br><br>接著不過一會兒，愛晴緩緩睜開了雙眼。</dd></dl>
+	<dl class="tc1 nc3"><dt>生川 愛晴</dt><dd>「⋯⋯？啊⋯⋯你終於來了。」</dd></dl>
+	<dl class="tc1 nc2"><dt>桃樂亭 芳司</dt><dd>注意到了指尖傳來了冰冷，芳司此時也不在意會弄髒手，直接將整個手掌貼了上去，想要緩解對方身上的異常。<br><br>「生川先生！」終於看見不同顏色的眼睛睜開，芳司喜出望外地喊了對方，並幫忙擦拭著臉上的鮮血，好讓對方可以更好說話。<br><br>「你還好嗎？有哪裡受傷嗎？」</dd></dl>
+	<p class="tc0 tab"><span>雑談</span></p>
+	<dl class="tc0 nc1"><dt>KP赤Seki</dt><dd>愛ㄌ</dd></dl>
+	<dl class="tc0 nc2"><dt>桃樂亭 芳司</dt><dd>^^</dd></dl>
+	<dl class="tc0 nc1"><dt>KP赤Seki</dt><dd>😭📸</dd></dl>
+	<dl class="tc0 nc0"><dt>布炵</dt><dd>快!!也讓我拍愛晴!!!(幹</dd></dl>
+	<p class="tc1 tab"><span>メイン</span></p>
+	<dl class="tc1 nc3"><dt>生川 愛晴</dt><dd>「恩？好像、的確有點痠痛⋯⋯不過比起這個，這裡也太冷了⋯⋯」</dd></dl>
+	<dl class="tc1 nc1"><dt>KP赤Seki</dt><dd>他試圖用顫抖不已的手撐起身子，最終卻失去平衡，倒在了你的身上。你能感受到，他甚至連吐出來的氣息都相當冰冷。</dd></dl>
+	<dl class="tc1 nc2"><dt>桃樂亭 芳司</dt><dd>「生川先生請先不要勉強了。」接住了全身帶著寒意的愛晴﹐雖然自己身子單薄，但給人溫暖還是作得到的吧，而見愛晴少見的虛弱模樣，芳司不禁滿臉擔心，想為對方做些什麼，但同時心裡卻有幾絲說不上來的開心，或許是對方正需要自己的緣故吧。<br><br>「我們先回去吧？趕快回去暖暖身子。」芳司說著他輕輕拉起愛晴的手，讓對方抓著自己。</dd></dl>
+	<dl class="tc1 nc3"><dt>生川 愛晴</dt><dd>似乎真的是冷過頭了吧，平常囂張跋扈的他，現在只顧著汲取暖意，賴在你的懷裡片刻後，才緩緩地動起身子。<br><br>「恩。」五指略顯僵硬地回扣你的掌心，藉著你的幫忙站起身子，雖然步伐仍有些不穩，但仍還能走。</dd></dl>
+	<dl class="tc1 nc1"><dt>KP赤Seki</dt><dd></dd></dl>
+	<dl class="tc1 nc2"><dt>桃樂亭 芳司</dt><dd>芳司緊緊地在愛晴身旁，慢慢地引領著對方，雖然身體感受到的只有寒冷，但見愛晴溫馴依靠自己的模樣，心中感到無法用言語表達的炙熱，臉上的微笑也不知不覺地上揚。</dd></dl>
+	<dl class="tc1 nc1"><dt>KP赤Seki</dt><dd>你與取回意識的愛晴，一起離開這個冷得讓人快要忘記正值夏季的住宅區。</dd></dl>
+	<dl class="tc1 nc1"><dt>KP赤Seki</dt><dd>時間為《凌晨2點15分》</dd></dl>
+	<dl class="tc1 nc1"><dt>KP赤Seki</dt><dd>你們一起回到了愛晴家中。這裡跟你上次來的時候相差無幾，小小的家中留有昭和時代延續下來的老舊擺設，以及為了長輩而架設的現代輔具，拼拼湊湊地構成充滿衝突的裝潢風格。<br><br>從室內沒有點燈，以及愛晴的穿著來看，他似乎是在外面待到半夜才回家。</dd></dl>
+	<dl class="tc1 nc1"><dt>KP赤Seki</dt><dd>踏入室內的愛晴已經回復到可以自己行走的程度，但看起來還是相當疲憊。明明剛走過殘存暑氣的夏夜道路，身體卻還是相當冰冷，在屋裡縮起身子。<br><br>雖然他似乎沒有受到嚴重的傷，但那遍佈紅色的全身，仍悄然喚起了你的不安。</dd></dl>
+	<dl class="tc1 nc1"><dt>KP赤Seki</dt><dd>〈靈感〉</dd></dl>
+	<dl class="tc1 nc2"><dt>桃樂亭 芳司</dt><dd class="SU">CCB&lt;=90 &lt;靈感IDEA&gt; (1D100&lt;=90) ＞ 88 ＞ 成功</dd></dl>
+	<dl class="tc1 nc1"><dt>KP赤Seki</dt><dd>你認為就這麼放著凍壞的愛晴太危險了。得用熱水讓他泡澡才行。<br>但是，你對愛晴獨自入浴感到不安，或許會心想自己一同入浴比較好也說不定。</dd></dl>
+	<dl class="tc1 nc2"><dt>桃樂亭 芳司</dt><dd>望著在屋子裡縮起身子的愛晴，與平時的模樣實在是相差甚遠，本來還有些開心的心情，也漸漸低落，他輕輕地摸了摸對方的頭。<br>「……生川先生，你在這裡等我一下，我去幫你弄個熱水，我們等一下一起泡澡吧？」他說著將把披在愛晴身上的外套弄得更緊一些後，便轉身前往浴室。</dd></dl>
+	<p class="tc0 tab"><span>雑談</span></p>
+	<dl class="tc0 nc1"><dt>KP赤Seki</dt><dd>（無聲尖叫）</dd></dl>
+	<dl class="tc0 nc0"><dt>布炵</dt><dd>＞＜</dd></dl>
+	<p class="tc1 tab"><span>メイン</span></p>
+	<dl class="tc1 nc3"><dt>生川 愛晴</dt><dd></dd></dl>
+	<dl class="tc1 nc3"><dt>生川 愛晴</dt><dd>「你要一起泡？⋯⋯好啊。」雖然對你鮮少提出的邀請感到遲疑，但很快便答應了。他看起來有些憋扭地伸手撫上頸側，不但沒有制止你撫摸自己的行為，嘴角更是微乎其微地勾起。</dd></dl>
+	<dl class="tc1 nc2"><dt>桃樂亭 芳司</dt><dd>「……生川先生看來跟我一起洗澡很開心呢？」見對方不像平時一樣制止自己，芳司停下了手上的動作，便微微笑調侃道，收回手去放熱水了。</dd></dl>
+	<dl class="tc1 nc1"><dt>KP赤Seki</dt><dd>你能看見愛晴像平時一樣微微蹙起眉頭，但卻沒有更進一步地反駁你，只是伸手拉緊你披在他身上的外套，目送你前往浴室。</dd></dl>
+	<dl class="tc1 nc1"><dt>KP赤Seki</dt><dd>你走進浴室，開始往浴缸放水。<br><br>畢竟正值夏天，你或許會試圖將水溫調低一些，但由於這裡沒有像公寓那樣的電子面板，你只能憑感覺測試水溫。</dd></dl>
+	<dl class="tc1 nc1"><dt>KP赤Seki</dt><dd>在等待浴缸放水時〈幸運〉or〈靈感〉</dd></dl>
+	<dl class="tc1 nc2"><dt>桃樂亭 芳司</dt><dd class="FA">CCB&lt;=80 &lt;幸運LUCK&gt; (1D100&lt;=80) ＞ 91 ＞ 失敗</dd></dl>
+	<dl class="tc1 nc2"><dt>桃樂亭 芳司</dt><dd class="SU">CCB&lt;=90 &lt;靈感IDEA&gt; (1D100&lt;=90) ＞ 65 ＞ 成功</dd></dl>
+	<dl class="tc1 nc1"><dt>KP赤Seki</dt><dd>你看著清澈的熱水慢慢積滿浴缸，忽然想起那淡薄又乾淨的香氣。該不會水無月交給你的粉末是入浴劑吧？</dd></dl>
+	<dl class="tc1 nc2"><dt>桃樂亭 芳司</dt><dd>沒有錯過愛晴眉間微微皺起來的皺褶，芳司不禁笑了笑。<br><br>芳司伸手用手測試著水溫，雖然自己會想要降低一些溫度，但想到愛晴縮著身子的模樣，他還是往上調高了一些。<br><br>在等待時，突然注意到水無月給的東西，試試看也沒有壞處，這麼想著芳司便起身去拿了白色紙袋，並打開包裝。</dd></dl>
+	<dl class="tc1 nc1"><dt>KP赤Seki</dt><dd>你再度打開水無月交給你的袋子。<br>裡面依舊裝著淡綠色的粉末，還有一個稍早沒發現的紙張，看起來像是留言卡片。若拿起卡片，上面會浮出文字。</dd></dl>
+	<p class="tc2 tab"><span>情報</span></p>
+	<dl class="tc2 nc1"><dt>KP赤Seki</dt><dd>「創造理想鄉」的使用方法<br><br>這是可以讓被施咒、精神不穩定的人類恢復正常的入浴劑。若無上述情況也可以使用。<br>使用方式：在對象泡澡時加入、詠唱以下咒文，接著向受術者提出問題並進行對話，讓其接受刺激。<br>問題不論是什麼內容都可以，關於他自己、你自己的事情，都可以趁這個機會詢問。如果是與其親近的對象，也可以詢問過去一直沒機會問的事。<br>在提問得當的情況下，約5個問題內就能達成效果。<br><br>附註：因為受術者處於異常狀態，恢復後並不會記得施術開始至結束的過程。</dd></dl>
+	<p class="tc1 tab"><span>メイン</span></p>
+	<dl class="tc1 nc2"><dt>桃樂亭 芳司</dt><dd>注意到了卡片，芳司在將粉末到下去之前，看了看浮現出來的文字。</dd></dl>
+	<dl class="tc1 nc1"><dt>KP赤Seki</dt><dd>看完卡片後，你接著將粉末、也就是入浴劑，倒進注滿熱水的浴缸中。<br><br>像是檸檬草或檸檬的清新香氣瀰漫開來，水色轉變為牛奶一般柔和的白色。若將手伸進水中，便能知道這是不會透出肌膚的濁湯型入浴劑，而水溫似乎也恰到好處。</dd></dl>
+	<dl class="tc1 nc1"><dt>KP赤Seki</dt><dd>接著，你聚精會神地詠唱卡片上的咒文，感覺到一種說不上來的奇特氛圍，漸漸佈滿整個空間。MP-1d3、SANc 0/1</dd></dl>
+	<dl class="tc1 nc2"><dt>桃樂亭 芳司</dt><dd>1d3 (1D3) ＞ 2</dd></dl>
+	<dl class="tc1 nc7"><dt>system</dt><dd>[ 桃樂亭 芳司 ] MP : 8 → 6</dd></dl>
+	<dl class="tc1 nc2"><dt>桃樂亭 芳司</dt><dd class="SU">CCB&lt;=81 SAN (1D100&lt;=81) ＞ 28 ＞ 成功</dd></dl>
+	<dl class="tc1 nc2"><dt>桃樂亭 芳司</dt><dd>在詠唱完咒文的當下，芳司感覺全身疲憊，有些站不穩，他吸了一口氣，檸檬的清新讓他舒緩了一些，並感受著周遭的氛圍，很快地振作起來，為了愛晴他還是邁開步伐，要為這整起事件落下一個完美的收尾。<br><br>「生川先生，水放好了可以泡澡了。」他走出浴室看著愛晴，並伸出手，打算領著愛晴進浴室。</dd></dl>
+	<dl class="tc1 nc1"><dt>KP赤Seki</dt><dd>在你放水的這段期間，愛晴為了抵擋微風，將客廳及廚房的門窗都牢牢關上，窩在最不通風的角落休息。</dd></dl>
+	<dl class="tc1 nc3"><dt>生川 愛晴</dt><dd>「恩。」一聽見你回來，他便睜開雙眼回應你，也沒多想就搭上你的手。</dd></dl>
+	<dl class="tc1 nc1"><dt>KP赤Seki</dt><dd>熱水準備好以後，你們兩人開始脫衣準備入浴。一起在脫衣間這個密閉空間中，動手脫下纏在身上的衣服，肌膚逐漸裸露出來。<br><br>雖然是夜晚，但仍無法抵擋夏季的悶熱，你的衣服吸滿了汗水。</dd></dl>
+	<dl class="tc1 nc1"><dt>KP赤Seki</dt><dd>你會為了確認愛晴的狀態而側目偷看吧。<br>他此時也在自己動手脫衣，但雙手似乎因為寒冷而動作不穩。</dd></dl>
+	<dl class="tc1 nc2"><dt>桃樂亭 芳司</dt><dd>「生川先生，我來幫忙吧。」芳司脫下了自己沾滿一整晚奔波汗水的內襯，已經先一步露出了肌膚，而注意到愛晴的動靜，他便微微笑出聲提議到，不等對方回答，便伸手慢慢為對方解開了沾滿鮮紅的衣物，將那一大片刺青展露出來。</dd></dl>
+	<dl class="tc1 nc3"><dt>生川 愛晴</dt><dd>「⋯⋯」他因為你的呼喚而轉過身子，視線明顯停留在你白皙卻又沾到些許紅液的身軀。當指尖觸及到你迎上的體溫，他便放棄跟頑固的鈕扣繼續拉扯，轉而伸手撫上你的手臂，試圖擦去那抹紅褐，同時感受著你的溫度。</dd></dl>
+	<dl class="tc1 nc2"><dt>桃樂亭 芳司</dt><dd>冰涼的觸感使芳司停下了手上的動作，眨了眨眼看向愛晴為自己擦拭紅色的模樣，他微微勾起嘴角，雖然等等就要入浴，不過在這之前先讓對方習慣溫度似乎會比較好，這麼想著芳司將自己的掌心放到了對方的胸前，交換彼此的體溫。<br><br>「生川先生，這樣有比較溫暖一些嗎？」</dd></dl>
+	<dl class="tc1 nc3"><dt>生川 愛晴</dt><dd>曝露在空氣下的胸口感受到暖意，愛晴的掌心不自覺地沿著你手臂的線條，覆上你的手背。<br><br>「⋯⋯恩。」他的手已經稍微回溫，相比稍早在公園時還要好上許多，隱約還能感受到他的心跳逐漸加快。雖然沒有過多言語，但他此刻的心情或許也能輕易地傳遞給你。</dd></dl>
+	<dl class="tc1 nc1"><dt>KP赤Seki</dt><dd>但緊接著，半裸著身子的他突然撇過頭、打了個噴嚏。看樣子還是得照顧其他地方才行。</dd></dl>
+	<p class="tc0 tab"><span>雑談</span></p>
+	<dl class="tc0 nc0"><dt>布炵</dt><dd>＠＄＃％＄＃％＠＃％＃＄︿＃＄＃＄％＠＃％＠＃％＃＄＃＃＠︿＄＃︿</dd></dl>
+	<dl class="tc0 nc1"><dt>KP赤Seki</dt><dd>啊嗚虧改嗚快開胎阿突太啊關威待歸災蓋</dd></dl>
+	<dl class="tc0 nc0"><dt>布炵</dt><dd>幹ㄚ（翻譯蒟蒻（？？</dd></dl>
+	<p class="tc1 tab"><span>メイン</span></p>
+	<dl class="tc1 nc2"><dt>桃樂亭 芳司</dt><dd>手心傳來了心臟跳動的感覺，被帶動著，自己的心臟也不受控制的加快了許多，而下一秒便被一個聲響打斷了，見愛晴打噴嚏，芳司下意識伸手繞到後方撫摸了愛晴的背。<br><br>「生川先生稍等我一下，我們等等就進去泡熱澡。」芳司說著便開始著手行動，他蹲了下來，為愛晴脫去下半身的衣物。</dd></dl>
+	<dl class="tc1 nc3"><dt>生川 愛晴</dt><dd>他低頭望著你動作，突然失去溫暖的手則輕輕撫上你的頭頂，捻起一縷金髮在手裡把玩，就像是要從寒意之中轉移注意力，指尖不斷地順著你的髮絲。</dd></dl>
+	<dl class="tc1 nc2"><dt>桃樂亭 芳司</dt><dd>「生川先生還真是喜歡我的頭髮呢。」注意到頭髮被把玩著，芳司不禁微微笑說到，並繼續脫下對方的貼身衣物。<br><br>「好了，生川先生先進去吧。」</dd></dl>
+	<dl class="tc1 nc1"><dt>KP赤Seki</dt><dd>懷著一種微妙的感覺，你們兩人先後進入浴室洗去髒污，緊接著將身體浸入放滿水的浴缸中。</dd></dl>
+	<dl class="tc1 nc2"><dt>桃樂亭 芳司</dt><dd>「水溫還可以吧？」在進去泡澡之前，芳司先在外面盛起水，往愛晴身上倒去，等到身子暖和一些，才拿了旁邊乾淨的毛巾沾濕開始幫忙拭去沾染在皮膚上的血跡。</dd></dl>
+	<dl class="tc1 nc3"><dt>生川 愛晴</dt><dd>「恩。這是檸檬？我們家什麼時候有這個的。」聞到陌生的入浴劑味道，他邊問道、邊在你的幫忙下開始動起恢復暖意的手，將看得見的頑固血跡粗魯地搓洗掉，留下另一種淡紅色在肌膚上頭。</dd></dl>
+	<dl class="tc1 nc2"><dt>桃樂亭 芳司</dt><dd>「別人給的，說是對溫暖身子很有用呢。」芳司見愛晴恢復的樣子，放心地笑了笑，不過並沒有馬上把遇到的事情告訴對方，打算再觀察一下再說。<br><br>「不過生川先生你動作輕一點，皮膚都紅透了。」芳司輕輕握住了愛晴粗魯動作的手。</dd></dl>
+	<dl class="tc1 nc3"><dt>生川 愛晴</dt><dd>「誰啊？」他轉過身子，輕輕握住你覆上來的手，停止了動作。「這些都乾掉了，很難洗。」</dd></dl>
+	<dl class="tc1 nc2"><dt>桃樂亭 芳司</dt><dd>「但用力搓對皮膚不好呢，雖然會久一點但我幫你擦吧。」沒有回答是誰，只是握了握愛晴的手之後抽出，並慢慢地擦拭著乾掉的血跡。</dd></dl>
+	<dl class="tc1 nc3"><dt>生川 愛晴</dt><dd>似乎沒有發現你迴避了問題，見你要幫自己擦澡，他便轉身與你面對面，意外坦率地讓你幫忙。</dd></dl>
+	<dl class="tc1 nc1"><dt>KP赤Seki</dt><dd>時間為，《凌晨2點44分》</dd></dl>
+	<dl class="tc1 nc1"><dt>KP赤Seki</dt><dd>在你們刷洗完身體，便會將身體泡入溫熱的水中。在街頭奔波並遭遇超現實事件的軀體，累積了超乎想像的疲憊。熱水讓你感到舒適無比，疲勞也漸漸融化。<br>與你一起坐在浴缸中，面對面泡澡的愛晴看起來也十分享受。夏天的深夜、滴落的汗水與浴水、一絲不掛的兩人。</dd></dl>
+	<dl class="tc1 nc3"><dt>生川 愛晴</dt><dd>「⋯⋯這樣太難坐了，後退一點。」原先面對你的愛晴突然挪動身子，主動將自己坐進你的懷中，硬是在這狹小的浴缸跟你擠在一塊。</dd></dl>
+	<p class="tc0 tab"><span>雑談</span></p>
+	<dl class="tc0 nc0"><dt>布炵</dt><dd>＃＠％＃＄︿＃︿＃＄︿＄＃︿＃＠＃︿＄︿＃＄＠＠！！＠！！＄＄＃＃＄︿</dd></dl>
+	<p class="tc1 tab"><span>メイン</span></p>
+	<dl class="tc1 nc2"><dt>桃樂亭 芳司</dt><dd>「生川先生還真是沒變呢。」見對方逐漸恢復的模樣，芳司輕笑幾聲，往後坐了一些，並將愛晴納入懷中，胸前的肌膚與對方幾乎貼在了一起。</dd></dl>
+	<dl class="tc1 nc1"><dt>KP赤Seki</dt><dd>溫熱與濕潤的肌膚相貼，你們或許會覺得心裡癢癢的，明明沒有發生任何奇怪的事，卻難以相信這是現實，感覺就像是置身夢境一般。</dd></dl>
+	<dl class="tc1 nc1"><dt>KP赤Seki</dt><dd>然而，當你們正在享受泡澡時，燈光突然全滅，浴室陷入一片黑暗。</dd></dl>
+	<dl class="tc1 nc1"><dt>KP赤Seki</dt><dd>從脫衣間的燈也熄滅的狀況來看，似乎是整個家的電力都中斷了。</dd></dl>
+	<dl class="tc1 nc1"><dt>KP赤Seki</dt><dd>〈聆聽〉</dd></dl>
+	<dl class="tc1 nc2"><dt>桃樂亭 芳司</dt><dd class="FA">CCB&lt;=72 &lt;聆聽&gt; (1D100&lt;=72) ＞ 77 ＞ 失敗</dd></dl>
+	<dl class="tc1 nc7"><dt>system</dt><dd>[ 桃樂亭 芳司 ] 大成功 : 1 → 0</dd></dl>
+	<dl class="tc1 nc1"><dt>KP赤Seki</dt><dd>浴室外面傳來了聲響。你感覺有誰正朝這裡靠近，但那股氣息很快就消失了，聲音也隨之平息，寂靜再度來臨。</dd></dl>
+	<dl class="tc1 nc2"><dt>桃樂亭 芳司</dt><dd>「……！？」被突如其來的漆黑給嚇了一跳，注意到了有甚麼向著這裡前進，芳司緊張地摸黑向前伸手，想確認愛晴還是不是還在自己前方。<br><br>「生川先生，突然變黑了，你還好嗎？」</dd></dl>
+	<dl class="tc1 nc3"><dt>生川 愛晴</dt><dd>「啊啊，大概是又跳電了吧，我晚點再處理。」沒有意識到可能是別人動的手腳，老屋子的毛病也多，發生問題也不是一、兩天的事了。<br><br>在你伸手觸摸自己時，或許是因為視線變黑的關係，他也變得主動起來，趁勢躺進你的懷裡，放鬆地靠上你的頸窩。</dd></dl>
+	<p class="tc0 tab"><span>雑談</span></p>
+	<dl class="tc0 nc0"><dt>布炵</dt><dd>生川愛晴！！！！！</dd></dl>
+	<dl class="tc0 nc1"><dt>KP赤Seki</dt><dd>😈</dd></dl>
+	<p class="tc1 tab"><span>メイン</span></p>
+	<dl class="tc1 nc2"><dt>桃樂亭 芳司</dt><dd>「……跳電的時機也太剛好了呢，不過如果很常跳電要找人定期保養會比較好。」見愛晴愜意的模樣，芳司便也沒有提到氣息的事情，任由對方靠在自己頸窩，同時手輕輕地在對方身上游移著，確認著愛晴的存在。</dd></dl>
+	<p class="tc0 tab"><span>雑談</span></p>
+	<dl class="tc0 nc1"><dt>KP赤Seki</dt><dd>幹你他媽游移是什麼意思</dd></dl>
+	<dl class="tc0 nc1"><dt>KP赤Seki</dt><dd>芳司？？？？？？？？！！！！！！！！！</dd></dl>
+	<dl class="tc0 nc0"><dt>布炵</dt><dd>只是確認存在！</dd></dl>
+	<dl class="tc0 nc1"><dt>KP赤Seki</dt><dd>（（（（（（（（（（（尖叫））））））））））））</dd></dl>
+	<dl class="tc0 nc0"><dt>布炵</dt><dd>愛晴才是！！！！直接靠上來ㄟ！！！！！！</dd></dl>
+	<dl class="tc0 nc1"><dt>KP赤Seki</dt><dd>你這樣他要油門踩下去ㄌ？？？？？？？！！！！！！！</dd></dl>
+	<dl class="tc0 nc0"><dt>布炵</dt><dd>＞＜（擦汗</dd></dl>
+	<dl class="tc0 nc0"><dt>布炵</dt><dd>（踩下去我們明天結的了咪（大擦汗</dd></dl>
+	<dl class="tc0 nc1"><dt>KP赤Seki</dt><dd>（那就大後天結（靠邀</dd></dl>
+	<dl class="tc0 nc1"><dt>KP赤Seki</dt><dd>ㄡ不對是後天（自動加兩天是怎樣</dd></dl>
+	<dl class="tc0 nc0"><dt>布炵</dt><dd>我要笑死直接加兩天</dd></dl>
+	<dl class="tc0 nc0"><dt>布炵</dt><dd>好</dd></dl>
+	<dl class="tc0 nc0"><dt>布炵</dt><dd>好（喘</dd></dl>
+	<p class="tc1 tab"><span>メイン</span></p>
+	<dl class="tc1 nc3"><dt>生川 愛晴</dt><dd>「老房子了，要保養的話可是大工程⋯⋯恩、」話才講到一半，注意力便被遊走在身上的手吸引注意，不輕不重的力道讓他下意識繃緊了下身體，低漏聲音。</dd></dl>
+	<dl class="tc1 nc3"><dt>生川 愛晴</dt><dd>「⋯⋯要在這裡做？」不論動機為何，這個舉動都被他視作調情一般。他轉過頭，依靠上方窗戶透進來的月光找到你顯眼的髮絲，進而判斷你的面容所在。他試圖在黑暗之中看清你的表情，掌心也伸手撫上你的臉側。</dd></dl>
+	<p class="tc2 tab"><span>情報</span></p>
+	<dl class="tc2 nc1"><dt>KP赤Seki</dt><dd>《對話規則》<br><br>請在僅有月光照明的深夜中，於浴缸裡進行兩人對話。<br><br>由芳司（或是愛晴），決定一個問題作為話題，並展開對話。提問數最多5個。若未滿5個，想中途結束也沒問題。<br><br>內容不限。無論是想知道的事、一直沒能問出口的事，或是無關緊要的閒聊都可以，請進行可以感到滿足的對話。<br><br>但請記得，等到泡完澡後，愛晴將會忘記在浴缸中的所有對話內容。此外，每結束一個問題、話題時，芳司需要擲骰一次「1D100」。</dd></dl>
+	<p class="tc1 tab"><span>メイン</span></p>
+	<dl class="tc1 nc2"><dt>桃樂亭 芳司</dt><dd>「……。」透過呼吸，芳司意識到了愛晴轉過頭來，而對方拋過來的問題，臉龐傳來的觸感，原本應該緩下來的心跳，此時又開始加速，使得芳司手上的動作停了下來，整個人陷入了沉默之中。<br><br>「……生川先生，你想要了嗎？即使是這種情況下也想跟我做？」作為先挑起情慾的人，芳司沒有意識到是自己挑起的，他欲拒還迎的回問到，雖然也不是不想做，但考慮到兩人的身體疲憊，芳司沒有主動往下一步走。</dd></dl>
+	<dl class="tc1 nc3"><dt>生川 愛晴</dt><dd>「恩，你不想嗎？有這麼在意停電？」他意外坦率地這麼回應，臉龐也向前摸索，憑藉微弱的光源尋找你的唇瓣，最後使雙唇落在了你的唇角輕啄。<br><br>「⋯⋯還是因為那個送你東西的傢伙？」不知不覺間變得溫熱的呼吸吐在你的唇邊，他在極近的距離盯著你的雙眼，眼神與語氣透出猜忌與不悅。</dd></dl>
+	<p class="tc0 tab"><span>雑談</span></p>
+	<dl class="tc0 nc0"><dt>布炵</dt><dd>（過呼吸</dd></dl>
+	<p class="tc1 tab"><span>メイン</span></p>
+	<dl class="tc1 nc2"><dt>桃樂亭 芳司</dt><dd>還沒有回話，唇上就傳來了另一人的溫度，他下意識閉上眼睛，輕輕地回應著愛晴的吻，在漆黑的浴缸中接吻，心中的某種情慾被挑了起來。<br><br>「……？」為什麼會突然提到水無月先生？芳司眨了眨眼，而透過月光看到了對方眼神中的情緒，他不禁笑了笑，再度將雙唇貼了上去，像是要安撫對方一樣，在上面輕輕落下幾次痕跡。<br><br>「生川先生很在意那個人嗎？在意我跟他的關係？」</dd></dl>
+	<dl class="tc1 nc3"><dt>生川 愛晴</dt><dd>緊蹙的眉頭很快被一個又一個的吻化開，他如飢渴又溫馴的犬獸一般，輕輕地舔舐你的雙唇，希望你以同樣的熱度回應。但一聽見你提及兩人之間的關係，那曖昧不清的答案讓他停下動作，難得地沉默片刻。<br><br>「⋯⋯你要走了嗎？」再度開口時，他的視線已經不再與你對視，而是望著貼在你頰側的髮絲，伸手描繪著他的形狀。</dd></dl>
+	<dl class="tc1 nc2"><dt>桃樂亭 芳司</dt><dd>注意到愛晴停下了動作，並有些落寞的樣子，讓芳司愣了愣，同時也不禁想到了當時吃巧克力時，那溫順的模樣，他便思索著自己該如何面對情況，並回答這個問題，緩緩握住了對方伸過來的手，加重了一些力道。<br><br>「……沒有呢，不是生川先生叫我來的嗎？我不會走的。」說著，他輕輕吻向對方的指節，想把視線重新聚集在自己身上。</dd></dl>
+	<dl class="tc1 nc3"><dt>生川 愛晴</dt><dd>「⋯⋯」安穩的重量落在掌心之間，他懸掛著的心也漸漸被承諾與吻給輕輕放下。他稍微轉動手腕，讓指腹輕柔地摩挲你的唇瓣，隨後又再度傾身，毫無偏差地吻上你的雙唇。</dd></dl>
+	<dl class="tc1 nc1"><dt>KP赤Seki</dt><dd>現在，失去電燈照明的浴室，只能依靠上方窗戶透進來的月光，勉強照亮浴缸周圍。在浴室迴盪不同於浴槽晃動的細微水聲時，一抹陰影投射在了水面上。</dd></dl>
+	<dl class="tc1 nc1"><dt>KP赤Seki</dt><dd>向那看去，窗外似乎有某種存在。<br>那巨大的影子凝視著毫無防備的你們。<br><br>你們因為那視線而畏怯，感覺短短數秒漫長無比時，巨影已經消失無蹤。</dd></dl>
+	<dl class="tc1 nc1"><dt>KP赤Seki</dt><dd>待身影消失，冷靜下來的頭腦讓你理解了。<br>剛剛的影子，就像是住宅區廣場看見的白蛆怪物。SANc(1/1D3)</dd></dl>
+	<dl class="tc1 nc2"><dt>桃樂亭 芳司</dt><dd class="SU">CCB&lt;=81 SAN (1D100&lt;=81) ＞ 66 ＞ 成功</dd></dl>
+	<dl class="tc1 nc7"><dt>system</dt><dd>[ 桃樂亭 芳司 ] SAN : 81 → 80</dd></dl>
+	<dl class="tc1 nc1"><dt>KP赤Seki</dt><dd>〈靈感〉</dd></dl>
+	<dl class="tc1 nc2"><dt>桃樂亭 芳司</dt><dd class="SU">CCB&lt;=90 &lt;靈感IDEA&gt; (1D100&lt;=90) ＞ 75 ＞ 成功</dd></dl>
+	<dl class="tc1 nc1"><dt>KP赤Seki</dt><dd>你記得先前的白蛆怪物已經被你退散了。而且你注意到它剛剛出現時，完全沒有感受到像是當時現場的寒意。</dd></dl>
+	<dl class="tc1 nc2"><dt>桃樂亭 芳司</dt><dd>唇與唇之間不停地相互接住，交換著彼此的心意，本該是這樣子的——<br><br>陰影吸引了目光，使視線落在了窗戶上，巨大的影子像是掀起漣漪一般，讓芳司頓感被潑了冷水，被驅散的怪物，重新出現在了眼前，雖然沒有當時的恐懼感但他還是楞了楞，整個人僵住。<br></dd></dl>
+	<dl class="tc1 nc3"><dt>生川 愛晴</dt><dd>意識到不速之客似乎正盯著他們，他迅速退開芳司的懷中，不悅地往窗外看去。莫名的視線令他本能地感到敵意，因而繃緊身體築起防備。<br><br>但不過片刻，黑影便消失得無影無蹤，留下一頭霧水的他，完全搞不清對方目的。<br><br>「⋯⋯什麼鬼？」他煩悶地抓了抓頭，只能做出這個結論，接著轉過頭，伸出雙手撫摸你的臉，確認那個黑影有沒有趁機在你身上動手腳。</dd></dl>
+	<dl class="tc1 nc2"><dt>桃樂亭 芳司</dt><dd>手心傳來的溫度，讓原本來僵著的身體感到安心許多，放鬆了下來，芳司輕柔的笑了笑，伸手覆住愛晴的手背，端詳著眼前擔心自己的人。<br><br>「生川先生已經不記得了嗎？那個怪物的事情。」仔細想一想，他還沒有問過為什麼對方會打電話給自己，電話中的沉默又怎麼回事，以及怎麼會滿身是血的倒在那驅蟲的旁邊。</dd></dl>
+	<dl class="tc1 nc3"><dt>生川 愛晴</dt><dd>「怪物？⋯⋯」他反問並沉默下來，似乎很認真地思考你的話語，雖然基於本能防衛的關係，他有一瞬間想到牡丹華蛇養的大蟲子，但很快又回到最近的記憶。<br><br>「這麼說起來，好像⋯⋯」就在要想起稍早的事情時，他突然蹙起眉頭、收手按住自己的眉心，看起來似乎是引發了頭痛，也因此中斷話語。</dd></dl>
+	<dl class="tc1 nc1"><dt>KP赤Seki</dt><dd>就在此時，你感覺被月色照亮的白色池水，在一瞬間閃過更加耀眼的光芒，而愛晴也舒緩了頭痛，繼續向你說道。</dd></dl>
+	<dl class="tc1 nc3"><dt>生川 愛晴</dt><dd>「回來的路上⋯⋯看見了什麼噁心的東西。」</dd></dl>
+	<dl class="tc1 nc1"><dt>KP赤Seki</dt><dd>芳司請擲骰1D100</dd></dl>
+	<dl class="tc1 nc2"><dt>桃樂亭 芳司</dt><dd>1d100 (1D100) ＞ 62</dd></dl>
+	<dl class="tc1 nc2"><dt>桃樂亭 芳司</dt><dd>注意到了愛晴在月光照射到池水時的表情變化，即使頭痛有舒緩的樣子，芳司還是伸手撫上了對方的臉龐，拇指在臉上肌膚輕柔的來回擦過，像對待貴重物一樣小心翼翼的。<br><br>「噁心的東西……應該就是那隻怪物吧，那你後面發生了甚麼？為什麼打電話給我呢？」</dd></dl>
+	<dl class="tc1 nc3"><dt>生川 愛晴</dt><dd>「之後⋯⋯不太記得了。但就是很想見你一面。」感受到你柔軟的手撫上臉頰，他微微轉頭，將面容埋進你的掌心。以往你這般憐惜的舉動恐怕會引起他的不悅吧，但此時他卻異常坦率地享受你的體溫。</dd></dl>
+	<dl class="tc1 nc2"><dt>桃樂亭 芳司</dt><dd>見對方如此坦率、甚至主動將臉埋進掌心的模樣，芳司忍不住勾起嘴角，明明才剛渡過危險，但此時心跳卻不受控制的加快，指尖輕輕地在臉上撫過，眉毛、鼻子、雙唇以及臉的輪廓，都能清清楚楚地感受到，現在都掌握在自己的手中。<br><br>「……哎呀，生川先生這樣說感覺就像是很喜歡我，把我當成戀人一樣呢。」緩了一下後，才輕聲繼續輕聲接續話題，他像是平時一樣，調侃又試探性地說著。<br><br>「生川先生果然是喜歡我的吧？」</dd></dl>
+	<dl class="tc1 nc3"><dt>生川 愛晴</dt><dd>「戀人？不對吧，不是那種東西。」<br><br>「但要說的話，現在還算喜歡，雖然你很常惹人厭。」提及戀人，他自覺這與過去的經歷，甚至自己的想像不同，也從未認為兩人已經成為那樣的關係。<br><br>雖然頻繁地與對方見面，有了肌膚之親，現在還全身赤裸地躺在那人的懷裡泡澡⋯⋯但面對這個名分，他就是會感到一股說不上來的不對勁。</dd></dl>
+	<dl class="tc1 nc1"><dt>KP赤Seki</dt><dd>芳司請擲骰1D100</dd></dl>
+	<dl class="tc1 nc2"><dt>桃樂亭 芳司</dt><dd>1d100 (1D100) ＞ 68</dd></dl>
+	<dl class="tc1 nc2"><dt>桃樂亭 芳司</dt><dd>面對愛晴的回答，芳司停下了手上的動作，將手收了回來，他端詳著眼前變得坦率卻又不失自己個性的人，雖然承認了喜歡，但後面補充的話又讓他感到心情七上八下的，明明有些開心，但在開心之後，又有一團火燃燒著。<br><br>「哎呀，在惹人厭這一塊我覺得沒有人能贏生川先生呢。」芳司收起了憐惜的心情，像平時一樣笑了笑。<br><br>「……不過，只是還算喜歡的話，那就算我跟其他人有什麼，生川先生也不會說什麼嗎？」或許是因為彼此都已經親密接觸了許多次，僅僅只是還算喜歡已經滿足不了他了，芳司便繼續提問到。</dd></dl>
+	<dl class="tc1 nc3"><dt>生川 愛晴</dt><dd>在你收回手時，他的眼角餘光正好瞄到你手上閃過的金光。或許是方才急於取暖的關係，沒能好好留意你的變化，他直到此時才後知後覺地發現這略顯花俏的飾品。<br><br>「怎麼可能啊。你不是說了不會走嗎。」他用嫌棄與不耐的語氣這麼回應道，接著像是要把你禁錮在原處一樣，又逕自倒到你的身上，試圖將情況轉為稍早之前的安然。接著，他抬起你戴著戒指的手。</dd></dl>
+	<dl class="tc1 nc3"><dt>生川 愛晴</dt><dd>「你什麼時候有這個的？」他的指腹輕輕地摩挲金黃色的表面，看起來有些在意。</dd></dl>
+	<dl class="tc1 nc1"><dt>KP赤Seki</dt><dd>芳司請擲骰1D100</dd></dl>
+	<dl class="tc1 nc2"><dt>桃樂亭 芳司</dt><dd>1d100 (1D100) ＞ 87</dd></dl>
+	<dl class="tc1 nc2"><dt>桃樂亭 芳司</dt><dd>「……雖然是那樣說，但事情總是會有變化的呢。」雖然這個變化並不在他的計畫之內，但對方的語氣加上擅自把人禁錮在原地的舉動，讓他微微皺起眉頭，帶著一絲不開心回應道。<br><br>「這枚戒指……是別人送給我的呢，說是對我有好感。」不打算跟愛晴說那人之後還對你有興趣，只說了一部份，他任其摩娑戒指，端詳著愛晴的後腦杓，靜待著對方會有什麼反應。</dd></dl>
+	<dl class="tc1 nc3"><dt>生川 愛晴</dt><dd>「⋯⋯啊？這就是為什麼你沒有馬上過來？」聽見這個回答，他也更加深不悅，甚至擅自將公園空無一人的理由歸咎於你。邊這麼說著的同時，他也用拇指轉動戒指，試圖要把它拔下來。</dd></dl>
+	<dl class="tc1 nc2"><dt>桃樂亭 芳司</dt><dd>「這個時間我只能走路過來呢。」注意到愛晴的動作，芳司便收起手臂打算將手收到後方，不讓對方再繼續下去，進而發現戒指其實拔不下來，又或是擔心水無月會透過戒指對愛晴做些什麼。<br><br>「……生川先生很在意我跟那個人發生過什麼呢？」</dd></dl>
+	<dl class="tc1 nc3"><dt>生川 愛晴</dt><dd>還在氣頭上的他注意到你有所行動，便使力抓住了你的手，阻止你收回，因而發現戒指實在是難以取下。<br><br>「太緊了吧，搞什麼？」他碎念道，接著又被你包裝成提問的言語燃起更多怒意，擅自補足他厭惡的畫面。<br><br>「那不是當然的嗎？那傢伙是誰、你又跟他幹嘛去了？」興許是因為入浴劑的關係，他沒有選擇起身走人，而是蹙起眉頭，惡狠狠地瞪著你問道。</dd></dl>
+	<dl class="tc1 nc1"><dt>KP赤Seki</dt><dd>芳司請擲骰1D100</dd></dl>
+	<dl class="tc1 nc2"><dt>桃樂亭 芳司</dt><dd>1d100 (1D100) ＞ 25</dd></dl>
+	<dl class="tc1 nc2"><dt>桃樂亭 芳司</dt><dd>「……我不認識那個人，其實甚麼也沒做，就直接來找生川先生了呢。」與凶狠的眼神對視，彷彿回到那天被人帶進巷子中，那時所看到那個的表情，芳司不禁勾起了微笑，最後也沒有繼續丟問題回去，簡單的解釋了自己的清白。<br><br>「生川先生，你雖然嘴上說是有點喜歡而已，但很在意我跟其他人做什麼呢。」芳司說著，伸出另一支空著的手，輕輕地幫忙梳理愛晴沾濕的頭髮，像是要安撫對方地不滿「……不過知道這些也足夠了，我會好好疼愛你的呢。」</dd></dl>
+	<dl class="tc1 nc3"><dt>生川 愛晴</dt><dd>聽見你的回覆，他從鼻間吐出一絲氣息，看起來勉強接受了這個答案。畢竟自己的東西又被不知哪來的傢伙纏上，一時半刻實在是無法緩解憤怒。<br><br>「⋯⋯什麼跟什麼啊。」當你再次觸碰他時，他微微瞇起雙眼，比以往都還要明顯地流露對此的喜愛。他默默地轉身，信任你而將毫無防備的背後交給你，順勢藏住了不自覺勾起的嘴角。任憑你梳弄自己的髮絲，而他也將注意力又放回到戒指上，繼續嘗試將不順他意的東西拔除。</dd></dl>
+	<dl class="tc1 nc2"><dt>桃樂亭 芳司</dt><dd>「……就是字面上的意思呢。」芳司看著對方再度溫順的模樣，他有些開心的勾起嘴角。<br><br>眼前那毫無防備展露無遺的後背，用手指梳過愛晴的髮絲，將其整理整齊，而在髮尾的底下，後頸也吸引了他的目光，趁著愛晴注意力還在戒指上時，將臉湊了過去，忍不住在上面輕啄了幾下，溫熱的氣息也吐在肌膚，像是要將對方的注意力放在自己身上。</dd></dl>
+	<dl class="tc1 nc3"><dt>生川 愛晴</dt><dd>「⋯⋯」雖然沒有轉過頭也沒有回應，但留在戒指上的指尖顯而易見地放緩動作，開始心不在焉地描繪你纖長的手指。<br><br>他的心神被輕易地勾引到後頸的觸感，以及輕得令人發癢的吐息，那股熱度不受他控制地擴散開來，漸漸染紅了耳尖。</dd></dl>
+	<dl class="tc1 nc2"><dt>桃樂亭 芳司</dt><dd>或許是因為愛晴沒有反抗，芳司的動作越發越大膽，整個人都在逐漸熱了起來，舌尖也從口中探出，往下舔拭著毫無防備的肌膚，挑逗著被勾起的慾望。<br><br>「……生川先生怎麼不說話了呢？」注意到手指上的動作有所改變，他停下動作留意愛晴的反應後，輕輕笑了一下，便湊到泛紅的耳朵旁輕聲問道。</dd></dl>
+	<dl class="tc1 nc3"><dt>生川 愛晴</dt><dd>吐息搔癢著敏感的耳邊，使他忍不住繃緊身體，手指也抽動了下、扣住兩人交錯的指縫。<br><br>「⋯⋯等你繼續啊。」事態往自己所想的方向發展，他預先壓下了躲開的念頭，以及幾乎要藏不住的低吟。因用力而變得低啞的聲音這麼回應著你，緊接著堵住近在咫尺的雙唇，像你一樣伸出舌尖，試著探入你的內部。</dd></dl>
+	<dl class="tc1 nc2"><dt>桃樂亭 芳司</dt><dd>「……。」低沉的嗓音近在咫尺，像是在邀請自己更加的深入，芳司沒有再繼續出聲回應，取而地之地用舌尖接受了對方探進口中的熱度，與之交纏在一起，他勾勒著對方的舌體，交換著彼此炙熱的地方。<br><br>梳理完髮絲而空閒的手也沒有空等，而是輕輕地向下深去，繞過了肩膀到胸腔的位置，遊走在對方刺青上，輕輕地規律地撫摸著肌膚，感受著對方的體溫以及心跳，為等等要深入的後續拉開帷幕。</dd></dl>
+	<dl class="tc1 nc3"><dt>生川 愛晴</dt><dd>維持這個姿勢接吻不免讓脖頸發痠，但他還不想打斷你的愛撫，接吻的細碎水聲更讓他感覺到，每一寸被觸摸的肌膚都變得滾燙。<br><br>不論胸口或唇舌都在分散著他的注意，染上情慾的腦袋逐漸沒辦法思考。他有些分神地拉長喘息的時間，斷斷續續地與你交織，汲取不同於肌膚的深入溫度。而那布滿痕跡的手，此時也情不自禁地撫上你游移的五指、手臂以及大腿，間接地鼓勵你繼續動作。</dd></dl>
+	<dl class="tc1 nc2"><dt>桃樂亭 芳司</dt><dd>「呼……。」交纏得越久，腦袋就越無法思考，只是一股腦的貪求著對方的溫度，直到無法呼吸才捨得稍微退開喘息，本該溫度適中的水，現在也已經不及對方炙熱。<br><br>而身上傳來的觸感，像是在引導自己一樣，他端詳著愛晴的表情變化，輕輕地用指尖挑逗著結實的肌肉，慢慢地向水下伸去，直到碰到對方的柱身才停下，他微微張開手心，像是搔癢一樣地去輕觸著前端，此時就像是掠食者一樣等待愛晴的反應。</dd></dl>
+	<dl class="tc1 nc3"><dt>生川 愛晴</dt><dd>他同樣緊盯著你綻紫的雙眼，與其說沒有閃躲，倒不如說他絲毫沒有餘裕察覺潛藏在你眼底下的掌控慾，只顧著沉浸在屬於他的世界中。在那裡，他可以霸佔你每一點、每一滴的時間，將你的身心全數奪走。<br><br>受到刺激的肌肉不自覺地跳動，隔著池水的觸覺理應鈍化，但那輕得幾乎要令人抓狂的挑逗，卻不受阻礙地傳遞了一股電流給他。他忍不住縮了縮下腹，柱身微微一顫、變得更加硬挺，也因為這個動作，感受到抵著背部的另一個硬度。<br><br>「⋯⋯近點。」他低聲說道，緊接著稍微向後坐，讓臀部緊緊地貼著你。只見他為了更好動作，抽開與你交扣的手，改撐在浴缸邊緣，接著開始緩緩搖動，一邊用臀肉摩擦你的硬挺，一邊讓自己的柱身撞擊你的掌心，貪婪地兼得兩者。<br><br>除了喝醉酒之外，他幾乎不曾這麼主動過。</dd></dl>
+	<dl class="tc1 nc2"><dt>桃樂亭 芳司</dt><dd>享受著因自己愛撫而有所反應的顫動，見愛晴沉浸的模樣，他屏住呼吸，一點一點的將愛晴鎖在身下，在慾望促使下，滿是情慾的眼神，已經做好準備把人整個吞噬。<br><br>「……嗯。」還沒等他更進一步，股間就先行傳來令人心癢的觸感，身子像是觸電一般震了一下，使得芳司不自覺的悶哼，定睛一看，視線中全被眼前的搖晃所占滿，他忍耐著飢渴難耐的身子，縱使要被慾火燒遍全身，還是起身將自己的柱身移開了貼著的臀肉，伸手環住了晃動的腰肢，整個人貼到了背上，另一隻手則握住了柱身。<br><br>「唔……生川先生，我還沒有說你可以動了呢。」芳司貼近耳背輕聲笑著說到，並加重了手上的力道，將對方的肉柱扣在手中，開始規律的上下摩擦著，將主動權重新拿回自己的手中。</dd></dl>
+	<dl class="tc1 nc3"><dt>生川 愛晴</dt><dd>浴缸中的水因為搖晃而前後撒出，隨後因為一方的動作漸漸止住。正當他還被自己製造的浪潮帶著擺動時，你緊貼上來的身子阻止了他更進一步，然而，還沒來得及滿足的情慾就像無底大洞，好比飢餓需要果腹，否則只會愈漸壯大。<br><br>他蹙起眉頭，在出聲表達不滿以前，便感覺到你的手重新開始動作，迫使他將話語一口咽下，只能繃緊身軀承受刺激，片刻才終於能重新組織言語。<br><br>「你、⋯⋯恩、不想要嗎？」柔軟的掌心包覆住自己套弄，他不禁想起先前進出你身體的時候。有所落差的地方被迷糊的腦袋輕鬆說服，他不禁嘆出一聲低吟，忍住在你手裡繼續漲大的念頭，將你的慾望也一起當作他想更加深入的藉口。</dd></dl>
+	<dl class="tc1 nc2"><dt>桃樂亭 芳司</dt><dd>注意到對方沒有反抗身體還緊繃起來，芳司笑了笑，頓時感覺自己已經得到了肆意行動的許可，他用掌心搓揉著愛晴的腹部，像是要給予獎勵一樣的不斷讓對方沉溺下去。<br><br>「……我沒有那麼說，不過如果生川先生著急想要的話，還請跟我說呢。」面對更加深入的邀請，他咬了咬下唇，控制住一瞬間的猶豫，勉強抑制著想要進入對方體內的慾望，雖然身體正在渴求著更多，但芳司在這時還希冀著愛晴先開口求自己進入。<br><br>說完他輕吻了對方耳後，雙脣啄著有可能是敏感帶的肌膚，手上的的動作也越來越快，也更加的粗魯，刺激著愛晴上下的感官，原本環住腰肢的手，也悄悄的向身後探去，撫上了臀部中間的分界線，指尖慢慢地將其分開。</dd></dl>
+	<dl class="tc1 nc3"><dt>生川 愛晴</dt><dd>「⋯⋯嘖、唔。」受到接二連三的刺激，自己的弱點被精準把握，他卻不能隨著興致納入身後的硬挺，只能被愛撫與輕語玩弄得無法思考。儘管身子為了避免更多刺激而向後退離，卻只是更加靠近令他心煩意亂的罪魁禍首，完全無法阻止熱流逐漸匯聚到下半身。<br><br>抓緊浴缸邊緣的手正在微微抽動，他直覺自己快無法忍耐，柱身一顫、一顫地跟著漲大。在幾乎快要因為這熟練的技巧而繳械前，他即時抓住了你正在套弄的手，試圖減緩刺激。<br><br>「等等、我快⋯⋯」他微微喘著氣，不知道是不是因為所剩無幾的自尊心，他似乎還不打算在此刻投降。</dd></dl>
+	<dl class="tc1 nc2"><dt>桃樂亭 芳司</dt><dd>眼見對方即將迎來高潮，手上動作卻突然被抓住，受到制止而停下了動作，讓芳司有些不滿地微微的皺起眉頭，但手中的柱身，就像是在催促著自己繼續一樣顫抖著，他也不打算讓進行中的事情斷在一半，即使力氣不及愛晴，他仍然加重手中力道擺動手臂，為最後做衝刺。<br><br>同時為了分散對方手上的注意力，他輕輕咬上耳垂，牙齒在上面印上淡淡的痕跡，像是在標記自己的物品一樣。<br><br>「呼……生川先生請把注意力放到我身上呢。」他在耳邊輕聲說道，整個人都壓在了愛晴身上，利用著身高差不讓愛晴逃離自己的計劃外。</dd></dl>
+	<dl class="tc1 nc3"><dt>生川 愛晴</dt><dd>耳垂傳來的疼痛，使健壯的身軀反射性地更往你的懷裡縮，加上那總是能輕易勾引注意的聲音與吐息，讓他很快又瀕臨迸發。<br><br>「我、這不是正在⋯⋯！」他壓抑自己的聲音向你埋怨，但很快便被破碎的低吟取代。雙手緊緊抓著你的手與浴缸邊緣，緊接著伴隨高亢得幾乎不像是自己的呻吟，下身與硬柱猛烈抽動，那比浴池還要溫熱的白濁就這麼釋放在你的手裡，並融入乳白色的池水中。<br><br>看來待會還得再洗一次澡了。</dd></dl>
+	<dl class="tc1 nc2"><dt>桃樂亭 芳司</dt><dd>呻吟在浴室中迴盪著，而破碎的嗓音使他更加的興奮，手上的速度也絲毫沒有緩下的意思，直到白色液體噴出，手心接到了不少刺激過後的溫熱，白濁的熱度透過手心傳達過來，此時他的心中被滿足感填滿了一些。<br><br>「……生川先生做得很好呢。」芳司不禁勾起嘴角，輕輕地用另一隻後撫摸著後背，在問的同時給予安慰，又或者是說獎賞。<br><br>然而沒有要在此打住，不等愛晴休息，他的下身還堅挺的立著，還發燙著的柱身就這麼擠進愛晴的大腿之間，緩緩的摩擦著，若有似無地邀請著對方繼續下一輪。</dd></dl>
+	<dl class="tc1 nc3"><dt>生川 愛晴</dt><dd>他在你的安撫下調適呼吸，但沒想到還沒等到柱身疲軟，他便在恍惚間感受到硬物竄入腿間，如同交合一樣地緩緩摩擦，又輕而易舉地挑起他的情慾。<br><br>仗著自己體力旺盛，他揣著又開始加速的心跳，沉默地轉過身，被你挑逗而微微泛紅的胸與腹，以及一雙明顯飢渴的雙眼面向了你。<br><br>在你有所反應之前，他傾身將一手搭在你的肩上，另一手竄入看不見底下的乳白色之中四處摸索，很快便找到了目標。興許是剛射過一次的關係，貼在頰邊的髮絲沁出一滴汗珠、緩緩滑落，他舔了舔唇，不自覺感到口乾舌燥。<br><br>他緊盯著你的表情，扶住你的硬挺，抬臀摩擦著你的頂端，在穴口徘徊。即使已經想像到它進入自己的滋味，體內因而變得躁動，但在沒有潤滑的情況下依舊很難進去。他不斷嘗試讓你擠進自己的穴口、接著滑出、摩擦會陰，他其實沒有心思吊人胃口，但一舉一動都像是在玩弄著急躁的心——除了你的之外，還有他自己的。</dd></dl>
+	<dl class="tc1 nc2"><dt>桃樂亭 芳司</dt><dd>迎上了愛晴投過來飢渴的視線，內心有甚麼被勾起，原本的動作也下意識停了下來，任由著汗珠滴落進水中，臉染上了與對方身上相同的紅暈，靜靜地等待著你的下一步行動。<br><br>「……唔、生川先生，請等一下。」沒有等他反應過來，喊出聲時也已經為時已晚，等他想要拉開距離時，前端就已經傳來了溫熱的觸感。<br><br>胃口瞬間被吊起，前端不斷受到刺激，已經不受控制的顫動，紫色的眼眸端詳著眼前玩弄著自己的人，慾望已經衝上大腦，恨不得立刻就深入對方的體內，將一切都納為己物，但注意到了接口的乾澀，芳司拉回了一些控制力。<br><br>「……還不能進去呢。」他強忍著興奮，向後退了一些，用手指代替硬柱，伸到了對方的穴口，慢慢地深入，將肉壁慢慢撐開，做好正戲前的擴張。</dd></dl>
+	<dl class="tc1 nc3"><dt>生川 愛晴</dt><dd>接連幾次滑出，不斷地消磨他的耐心，動作更是因此變得急切不已。待你接手觸碰自己的入口時，他意識到你的目的，這才放手讓你做好前戲。<br><br>感覺到相較內部冰涼的指尖探入其中，他微微蹙起眉頭，結實的身體照著本能繃緊，內壁夾住你的指節，搭在肩上的手也不自覺地出力。但在你提醒以前，他便暗自深吸了一口氣，照著以往的經驗放鬆，讓你能更好地深入。<br><br>「差不多就行了⋯⋯」浴池裡的水似乎也不小心跟著鑽入其中，他忍著不同以往的異物感，用染上情慾而異常低啞的聲嗓催促著你。</dd></dl>
+	<dl class="tc1 nc2"><dt>桃樂亭 芳司</dt><dd>肩上傳來意料之外的力量，他弓起肩膀，上面留下了泛紅的手印，芳司不禁吃痛的低吟了一聲，手上的動作也被迫停下，雖然肩膀的疼痛讓他有些在意，但因為是自己引起的，心情反而有些亢奮。<br><br>「……沒充分弄的話會受傷的。」沒有照著對方的催促做，而是增加了手指的數量，慢慢的在裡面進進出出，打算慢慢的讓其擴張到能納入自己的硬挺為止才肯停手。<br><br>「應該可以了。」直到穴口能輕鬆被手指埋沒，芳司才終於收手，將硬物抵在了穴口輕輕摩擦，前端忍不住流出先走液也沾到上面，充當了一些潤滑的作用，在進去之前感覺全身已經滾燙到不行。<br><br>「……生川先生想要嗎？」他壓著慾火，低聲問到，或許這已經是他能保持著理智的最後問題了吧。</dd></dl>
+	<dl class="tc1 nc3"><dt>生川 愛晴</dt><dd>雖然是出於擴張的目的，但纖長的手指卻偶爾划過敏感點，迫使內壁一顫一顫地隨著動作收縮，腰桿也跟著微微搖動起來。他幾度想就這麼連著手指一起含入你的硬物，慶幸偶發的痠痛時不時讓他恢復理智，一路忍耐直到前戲過去，自己的柱身也在不知不覺間又膨脹起來。<br><br>他此時的身子，已經因為方才的刺激而彎下了腰，雙手則移動到你身後的浴缸邊緣撐著。<br><br>「恩、快點⋯⋯」他在你的唇邊喘著氣回答，但與此同時，已急躁地先一步往下坐。準備好的入口輕易地吃進你的頂端，不同於手指的硬度與大小令他忍不住倒抽一口氣、緊蹙眉頭，但比起疼痛，湧上更多的是強烈的滿足，以及慾望。<br><br>他貪心地緊咬你的柱身，同時不顧你與他的疼痛，繼續往下坐。朦朧的夜色中，他興奮的表情似乎藏匿著些許癲狂，只管將你一點一點地納入體內，成為自己的東西、只屬於他的東西。<br><br>「呃、唔恩⋯⋯！」等到全數吞入時，他強忍著的痠澀與刺激也終於無法抵擋，在同一瞬間爆發開來，他忍不住仰起頭，發出像是悲鳴與驚呼的高亢呻吟，立挺的前端也又吐露出些許液體。</dd></dl>
+	<dl class="tc1 nc2"><dt>桃樂亭 芳司</dt><dd>興奮的表情又或著是貪婪地慾望，眼前的一切都讓他感到癲狂，芳司的大腦彷彿受到雷擊一樣衝擊，接著發麻，噴發出的感情逐漸將他吞噬。<br><br>在聽到答案的一瞬間，他的理智再也維持不住，雙手搭在腰支上，把整個人往自己的方向後拉，配合著愛晴往下坐的時機，堅挺的柱身非常順利地進入，直到最深處，裡面的滾燙與緊緊包覆住柱身的皺褶都在將他心中的慾望推至最高點。<br><br>「生川先生……」耳邊傳來了高坑的呻吟，他忍不住回應那些悲鳴叫著對方的名字，等到適應了深處，才緩緩從緊迫中不捨地抽出。<br><br>過於貪戀裡面的溫度，讓他無法等待太久，他又擺動了他的腰，將自己的堅挺再度埋入深處，水也在撞擊處掀起了不小的聲響，與愛晴的悲鳴迴盪在浴室之中，芳司抬頭望著眼前因仰頭而展露的頸部，他探頭過去舔舐，上下都給予著刺激。</dd></dl>
+	<dl class="tc1 nc3"><dt>生川 愛晴</dt><dd>又經歷一次繳械的他顯得有些失神，體內不斷收縮、按壓著把他變得如此狼狽的硬柱，就像是試圖挽留對方一般，阻止它離開自己的身體。瞬間變得空虛的穴口焦躁地開合，所幸你也抱持同樣的想法，很快又用利刃貫穿了他。<br><br>感覺周遭逐漸變得模糊，卻又如此清晰。頻頻撞入深處造成的痠麻、掃過敏感處的癢意，甚至貼上脖頸的濕潤，無一不向自己宣揚你的存在。<br><br>好不容易抓住交合的空檔，他低下頭，想試著在朦朧之中尋找你的唇瓣，感受更多滋味，但礙於體內的刺激實在太令人著迷，連用於支撐的雙手都不小心從浴缸邊緣滑落數次，分身乏術的他只能蹙著眉頭，將臉埋入你的髮頂。<br><br>等到習慣近乎於暴力的抽插，他也再度擺動腰肢迎合。兩人毫不節制的動作使池水又灑溢而出，也隨著你的柱身染濕他的內壁，思緒已然被慾望粉碎，他根本無暇顧及什麼異物，甚至產生你已經在他體內釋放的錯覺，使他忍不住勾起嘴角。<br><br>每一次的頂入都讓他幾乎要淹沒在情慾的浪潮中，他蹙起眉頭承受猛烈的攻勢，有好幾分力道甚至源於自己，粗魯地吞吃你的男根。即使體力再好，也無法擺脫慾望的影響，麻痹得令他幾乎要失去意識，趨於本能地不斷呻吟、喘息、緊縮。有時他的聲音聽起來就像是求饒，但你們或許清楚，他絕對不想停止。</dd></dl>
+	<dl class="tc1 nc2"><dt>桃樂亭 芳司</dt><dd>感受到頭頂傳來了重量，但芳司已經顧不上周遭以及對方的狀況，只知道留在頸部的痕跡越來越深，浴缸裡的乳白已不知道潑灑到外面多少，一次又一次的頂入，都讓他掉入更深沉的刺激當中，只能感覺自己的腦袋變得朦朧，思考變得遲鈍，只剩下慾望驅使著軀幹，準備將愛晴一步步的納入明為自己的深淵。<br><br>肌膚與肌膚的交融在對方的配合下，發出了清脆的撞擊聲，耳邊的呻吟與求饒，都反而成為了他擺動身體的糧食，反而更刺激他發麻的腦袋，抵抗不過穴口的吞食、不斷挽留且縮緊，使他已經無法更加堅硬的柱身在深處變得發紅腫脹，而為了最後一刻的釋放，著急地探入對方深處，尋找著標記印記之處，動作彷彿是要將對方刺穿一樣的粗魯。<br><br> 「哈……生川先生……我快要射了……！」明明是在池水中，熱意卻不斷匯集，在愛晴體內的肉柱似乎已經到達極限，一跳一跳的抽動著求著釋放，芳司忍不住發出悶哼，他咬著下唇，在快要爆發之際出聲，像是在詢問著能不能在深處留下屬於自己的味道。</dd></dl>
+	<dl class="tc1 nc3"><dt>生川 愛晴</dt><dd>咬住頸子的利齒、用力掐住腰桿的雙手，以及不斷承受撞擊的臀部都令他發疼，但都不及體內兇猛進出的肉柱。平時不可一世的黑道份子，現在卻容許你蹂躪自己的身體與理智，毫不留情的粗暴使他更加興奮，卻也在不知不覺間將你壓在浴缸邊，禁錮在這個小小的空間中，被迫與他一起陷入失控的困境。<br><br>聽見你按耐不住的話語，他粗喘著氣緩下動作，接著稍微後傾，近距離地欣賞自己的傑作。你那慾火焚身、渴望釋放的姿態，使他也不禁舔了舔唇，像是野獸因為你而增添食慾。<br><br>「快點、都射給我⋯⋯」脫口而出的是連他自己也沒預料到的顫音，屢屢呻吟而顯得沙啞的聲嗓似是懇求、又像是命令一般。他的身軀已深深地含進你的根部，接著催促似地又前後扭動起來，原先成為阻力的水在律動之下化作他加快速度的助力，一舉一動都像是要把你榨乾一樣，將你的全部都吃乾抹盡。</dd></dl>
+	<dl class="tc1 nc2"><dt>桃樂亭 芳司</dt><dd>在聽到沙啞顫音的那一刻，芳司便失去了理智，失神地只想著配合著你催促的動作，用盡最後的力氣往底部刺去，手臂不再壓著股間，往上直接環抱住了整個人，像是要阻止你最後一刻反悔，把全身都向下壓，不到一會白濁從前端全部灌入了最深處，將自己最炙熱的愛液都全部交予給對方，接著全身力氣像是都被吞食一般，終於無力的癱軟在愛晴身上。<br><br>原本激烈的碰撞聲與漣漪的水聲都在此停下，只剩下了不同的喘息聲在空氣中交織，吐出的熱氣從你的頸部慢慢地向下，最終在胸口處停留，金色的髮絲被臉擠到了愛晴的肌膚，緊緊地貼在了胸口上，像是在撒嬌一樣在結實的肌肉上磨蹭著，似乎在找個舒服的位置將頭部擺好，貪戀著事後的溫存。<br><br>「……生川先生……你還好嗎？」直到回過神來，他才微微抬起頭，確認著對方的狀態，溫吞的伸手輕輕劃過愛晴的髮絲，貼到了你的臉龐，拇指輕輕地愛撫著。<br></dd></dl>
+	<dl class="tc1 nc3"><dt>生川 愛晴</dt><dd>重心突然被往下一帶，毫無防備的軟壁深處隨之抽動，緊緊絞住闖入的凶器，接著感受到相較體內冰冷的液體灌入體內，使他忍不住哆嗦身體，連同雙腿都用力地夾住你，並又因此陷入高潮，張口發出無聲的吟叫，顫抖著吐出所剩無幾的液體，射在了你的胸與腹上。<br><br>距離放好熱水早已過了一段時間，瀰漫在浴室裡的霧氣也老早散去，這裡僅僅充斥兩人虛弱的喘息，象徵方才激烈的情事，卻使他感覺身體仍舊炙熱。或許是因為你緊緊貼到自己身上的關係，那股黏膩與熱度無法被輕易消除，似乎只要你還觸碰著自己，他就無法冷靜。<br><br>感受到熱度蔓延到自己的胸口，緊緊扒在浴缸的手總算是鬆了開來，單手摟住懷中人的肩膀，讓人安穩地躺在自己的懷裡，感受那因你而躁動的心跳。<br><br>「恩⋯⋯」使用過度的喉嚨沙啞地回應道，他迷迷糊糊地低下頭，享受你的疼愛，接著上前親吻你的嘴唇，連帶吐息一起停留在上頭摩挲，靜靜地享用屬於他的東西。</dd></dl>
+	<dl class="tc1 nc1"><dt>KP赤Seki</dt><dd>你們沉浸在屬於彼此的時間，在剛剛暴力地相互掠奪之後，滿足的你們此刻只是輕柔地親吻、溫存，感受情愛後的餘溫。</dd></dl>
+	<dl class="tc1 nc1"><dt>KP赤Seki</dt><dd>然而，毫無預兆的，坐在你身上的愛晴突然猛地震顫身體，還埋沒在體內的你的柱身，也會感受到強烈的排斥吧。<br><br>只見他發出痛苦的呻吟，像是要甩開什麼似地不斷搖頭，雖然雙眼失神卻拼命掙扎的模樣，清楚地傳達給了你。</dd></dl>
+	<dl class="tc1 nc3"><dt>生川 愛晴</dt><dd>「有什麼人⋯⋯在叫我。是哪個傢伙、吵死了⋯⋯！」</dd></dl>
+	<dl class="tc1 nc1"><dt>KP赤Seki</dt><dd>冷靜下來的你幾乎是瞬間理解了。這是水無月幹的好事。<br>他正在愛晴的腦中低語。你不禁認為，這一定與在住宅區施展的咒語一樣，絕對不懷好意。</dd></dl>
+	<dl class="tc1 nc1"><dt>KP赤Seki</dt><dd>與水無月進行意志對抗，成功率為95%</dd></dl>
+	<dl class="tc1 nc2"><dt>桃樂亭 芳司</dt><dd class="SU">CCB&lt;=95 &lt;對抗&gt; (1D100&lt;=95) ＞ 95 ＞ 成功</dd></dl>
+	<dl class="tc1 nc2"><dt>桃樂亭 芳司</dt><dd>本來還沉浸在溫存中，溫柔的接過唇上遞來的溫度，但下一秒，事情超出他預料的急轉時下。<br><br>「這是……唔。」意識到可能是水無月做的事情，芳司不禁皺起眉頭，但還沒來的及動作，便被愛晴掙扎的動靜所影響，連帶著發生了悶哼。<br><br>「……生川先生，沒事的，我在這裡。」看著對方失神的模樣，芳司頓時對犯人感到怒不可遏﹐但更多的是擔心，他溫柔的撫摸著愛晴，嘗試安撫對方。</dd></dl>
+	<dl class="tc1 nc1"><dt>KP赤Seki</dt><dd>你溫柔地安撫愛晴，試著讓他擺脫水無月的影響，而此時，浴缸的水發出微微的光芒，溫柔地包圍你們。<br><br>而愛晴的臉用力地埋入你的掌心，失神的雙眼似乎逐漸抓回理智，但也染上些許怒火。</dd></dl>
+	<dl class="tc1 nc3"><dt>生川 愛晴</dt><dd>「你、懂什麼了⋯⋯！我要怎麼做、都跟你這傢伙沒有關係！」</dd></dl>
+	<dl class="tc1 nc1"><dt>KP赤Seki</dt><dd>他似乎正朝著遠方的人喊話。這麼說完後，他的雙臂突然圍繞住你的背部，將你緊緊摟入懷中。<br>接著他毫不猶豫地，將臉龐貼近你一絲不掛的身體。在頸根處、鎖骨上方，他落下了唇瓣，像是惡作劇般地輕咬，令你感到焦躁難耐的疼痛。</dd></dl>
+	<dl class="tc1 nc1"><dt>KP赤Seki</dt><dd>接著，他張嘴至能看到舌尖的程度，並用力地吸吮你的肌膚。帶著熱度的刺痛緩緩湧上，逐漸蔓延至全身。那股熱度相當粗暴，彷彿要將碰觸到的地方燃燒一般炙熱。但其中，卻又矛盾地夾雜令人眷戀的焦躁與渴望。</dd></dl>
+	<dl class="tc1 nc1"><dt>KP赤Seki</dt><dd>「獨佔欲」，你認為這個詞再適合不過了。<br>那個名為吻痕的獨佔痕跡，在你的身體上綻放如花一般的緋紅。</dd></dl>
+	<dl class="tc1 nc3"><dt>生川 愛晴</dt><dd>「老子跟這傢伙就是這種關係⋯⋯少來煩我！」</dd></dl>
+	<dl class="tc1 nc1"><dt>KP赤Seki</dt><dd>微光消退，浴缸裡盛滿的水輕輕搖曳。彷彿映照著你內心的動搖。<br>他灼熱的視線、被他的肌膚包覆的溫度、僅屬於兩人的浴缸，你會不自覺地用指腹撫過他留下的痕跡吧。<br><br>此刻的愛晴雖然已經取回了自我，卻還沒完全回復。也就是說，他今後將無法想起發生在這裡的事。<br>在這片交纏著熱度的空間裡，你或許也能以熱意作為藉口，像他一樣留下吻痕吧。</dd></dl>
+	<dl class="tc1 nc2"><dt>桃樂亭 芳司</dt><dd>「唔……」白皙的肌膚上被留下了清楚地紅印，刺痛刺激著他的身體，如果是平時，他會不太開心吧，但一見到愛晴的模樣，原本平靜下來的慾望瞬間被勾起，還埋在體內的肉柱又再度變得堅挺。<br><br>紫色的眼眸靜靜的端詳著眼前的人，下一秒他伸手將愛晴的臉龐抬起，默默吻上刺痛他的罪魁禍首，用舌尖舔過唇瓣，接著緩慢向下移動，輕觸著下巴、喉嚨、鎖骨還有——<br><br>像是交換著誓約一樣，選在愛晴同樣的位置，輕輕咬下，並吸吮至發紅，在對方忘掉一切之前，留下這場歡愉過後的痕跡。</dd></dl>
+	<dl class="tc1 nc1"><dt>KP赤Seki</dt><dd>你也像他一樣，貼近對方的身體。<br><br>起初只是碰觸他的雙唇，感受他的心跳與氣息，而他也若有似無地回應著你，你的腦海隨即被幸福感與他的存在填滿。接著，你的唇瓣游移到他的頸根，並用力地吸吮那處，愛晴的口中也不禁漏出一聲低吟，軟壁又咬住了你的柱身。<br><br>當他意識到身上留下如此成形的痕跡時，他不自覺地勾起嘴角，視線緊盯著你的雙眼，透出潛藏在其中的佔有之情，緊接著放到點燃慾火的罪魁禍首之上。利齒輕咬住你的脣瓣，在你因吃痛而稍微退縮時，他又緊跟上前探入你的唇舌、咬住舌尖，好不容易平息的炙熱彷彿又再次升溫。</dd></dl>
+	<dl class="tc1 nc1"><dt>KP赤Seki</dt><dd>此時，一絲不同於池水的微光照映到你們身上，你不禁瞥向窗外，發現才剛探出頭的朝陽正灑進室內。雖然不知道現在的確切時間，但似乎已經跨越漫漫長夜，迎來黎明。</dd></dl>
+	<dl class="tc1 nc3"><dt>生川 愛晴</dt><dd>「唔⋯⋯恩？」</dd></dl>
+	<dl class="tc1 nc1"><dt>KP赤Seki</dt><dd>在與你接吻的途中，愛晴突然放緩速度，在喘息間吐露一聲疑惑的單音。他眨了眨眼，摸了摸自己的額頭，看向你的眼神滿是困惑，隨即望向四周，嘗試理解自己陷入了什麼狀況。</dd></dl>
+	<dl class="tc1 nc3"><dt>生川 愛晴</dt><dd>「⋯⋯？我什麼時候、呃⋯⋯！」使用過度的腰肢以及體內湧上無法忽視的痠痛，使他發出吃痛的聲音，身體也為之一緊。他猛地看向下方，只見自己與你的身子緊緊相貼，屬於自己的莖身則露出乳白色的水面，抵在兩人之間，蓬勃得像是準備爆發。<br><br>「啊、⋯⋯⋯⋯啊？」急速運轉的腦袋似乎是知曉了狀況，但又完全無法理解為什麼會陷入這般地步，只能困惑又驚訝地愣在原處。</dd></dl>
+	<dl class="tc1 nc2"><dt>桃樂亭 芳司</dt><dd>雖然以芳司的身體已經累得無法再延續第二輪，但慾火卻不停地被刺激著，交遞的視線、唇舌的交纏，兩人的交織都像是燃料一樣不停地將熱度堆得越來越高，使得被吞咬的肉柱都脹得有些發疼，捨不得離開。<br><br>而黎明的到來，伴隨著愛晴帶著困惑的聲音，以及愣住的反應，芳司馬上就看出對方已經忘掉了剛剛的一切，恢復了原本的模樣，雖然正溫存到一半感到可惜，但他還是勾起了嘴角，輕輕吻上還有些發矇的愛晴，迎接你的回歸。<br><br>「……哎呀，生川先生，你怎麼了？」芳司故意裝作不知情的模樣，只是伸手環住腰肢，不讓你逃跑，並輕咬了唇瓣，埋在體內的肉柱也蓄意往上頂，放任慾火繼續燃燒。</dd></dl>
+	<dl class="tc1 nc3"><dt>生川 愛晴</dt><dd>「呃、喂⋯⋯你等等⋯⋯」茫然的他根本沒有機會適應各個部位的痠澀，突如其來的頂弄更是令他緊蹙眉頭，並下意識地回咬住面前的唇瓣作為抗議。他伸手抵住你的胸膛，試著將你推開來起身，但發軟的腰肢使他又立刻坐了回去，反而讓你的硬挺再度進到深處。<br><br>他因此低下頭、發出一聲低吟，咬牙忍著讓突如其來的刺激過去，讓緊縮的甬道放鬆。他完全沒有剛才失控、壓在你身上猛力扭動的記憶，但身體卻好好留下了剛才用力過猛的性愛痕跡，方才灌入他體內的白濁因為抽插而被稍微帶出，逐漸從深處蔓延而下、浸染其他沒有被愛液覆蓋的肉壁。<br><br>先前的經驗馬上提醒了他，自己似乎已經被你內射了一次。他瞬間紅了耳根、臉頰發燙，過於清醒而感到羞恥與不安。<br><br>失去記憶的這段時間，自己到底做了什麼？就連某次酩酊大醉後，隔天都沒有出現像這樣的斷片症狀，難不成是有人給他下了藥？</dd></dl>
+	<dl class="tc1 nc2"><dt>桃樂亭 芳司</dt><dd>享受著愛晴在懷中只能輕微抵抗，又無法掙脫的模樣，但同時也因為對方的反應，讓芳司發燙的腦袋冷靜許多，反而感到有些空虛以及不滿，紫色的眼眸緊緊端詳著眼前的人。<br><br>「唔……！」然而股間的堅挺還是受到了不小的刺激，差一點就再一次射出，只見溫熱的流體慢慢滑下，覆蓋整個柱身，他忍不住發出悶哼，身體還是不受控制的起了反應。<br><br>「……生川先生請不要亂動呢。」或許是看出了對方的不安，芳司將慾望壓回心中，鬆開了對愛晴的束縛，並伸手輕拍著背，安撫還沒釐清現狀的對方。</dd></dl>
+	<dl class="tc1 nc3"><dt>生川 愛晴</dt><dd>見你收起最初的情慾，將注意力放到了他的狀態，他這才感覺你與自己站在了同一線上，趕跑了不少忐忑。即使他仍因搞不清狀況而顯得煩悶，但他只是暗自嘆了一口氣，至少想先讓自己習慣那敏感到不行的身體，以及似乎又變得更硬的你的東西。<br><br>「⋯⋯是怎麼變成這樣的？」等到適應體內的硬物後，他才抓亂自己的頭髮，想趁機掩藏自己的害臊、裝作不在意的樣子，將散亂在視線前面的碎髮向後梳理，同時向你問道。他的動作一向粗魯，此時又惹得身體微微晃動，即使他根本還無心行房，甬道卻還是因為這些舉動而自然收縮。</dd></dl>
+	<dl class="tc1 nc2"><dt>桃樂亭 芳司</dt><dd>本來思考著要如何回答問題，但包覆著堅挺的內壁有所收縮，再度刺激著還敏感的柱身，使芳司緊閉眼睛忍不住低下頭，還撫在對方背後的手掌也下意識加重了力道，將愛晴往懷中推進幾分，嘴中不自覺發出悶哼，等到情慾稍稍散去，才抬起頭埋怨地盯著眼前的人「……生川先生。」<br><br>「……是你打電話叫我過來的，因為沒有車，我還是走路來的呢。」等到身體緩和過來，他才開始轉動腦袋，一時之間也不知從何說起，兩人又是怎麼纏綿上的，自己聽了也會很難相信的吧，他決定從一切的開頭說起，試探地觀察著愛晴的反應。<br></dd></dl>
+	<dl class="tc1 nc3"><dt>生川 愛晴</dt><dd>他察覺到你的反常，並在你推搡自己時，及時伸手撐在浴缸邊緣，才不至於將你整個人壓倒。僅存一邊視線的雙眼發現你似乎比自己還要難受，原先害臊的情緒因此被掃空，他緊緊盯著你的表情，知曉你的情慾是因他而起，一股熱意彷彿透過交合的地方傳遞了過來。<br><br>他不自覺吞了吞口水，心中揚起一絲得意與滿足，以及逐漸壓過一切情感的渴望。<br><br>「我不是指這個。」直到進入浴池以前他都還有印象，就是不知為何沒了中間的過程，等到回過神時，身體已經與你緊緊相連，兩人似乎還一路做到早上⋯⋯在這段時間，你的表情到底有多精彩、又是多麼渴求自己，全部錯過的他越想越在意。<br><br>「⋯⋯算了，先做完再說。」既然沒了印象，那就再來一次。話語剛落，他便吻上了你，不顧你的意願又開始緩緩扭動腰肢。</dd></dl>
+	<dl class="tc1 nc2"><dt>桃樂亭 芳司</dt><dd>「請等、我已經不……唔！」還沒等他反應過來，下半身就傳來了電流通過的觸感，使他反射性地抓緊了你的腰肢，原本剛剛的動作只是逗弄罷了，並沒有要計畫繼續做下去，沒有想到愛晴還打算要繼續做下去，畢竟昨夜在驅逐驅蟲時已經消耗了大部分體力，再加上已經溫存並射過一輪了，芳司已經沒有餘力跟上愛晴的動作，只能任其吞食著自己僅存的矜持。<br><br>不過雖然對方突如其來的行動，讓芳司感到有些惱火，但再度被勾起的情慾又再度的燃燒，唇與唇的水聲使他全身發燙，原來還被動著的軟舌，也一轉攻守向著口中探去，肆意挑弄你的舌根，即使只有一些也好，他還是想要奪回主動權。<br><br>整個人再度被慾望吞噬，他的柱身不斷地在深處顫動著，但或許是因為自尊心，他沒有失去理智，滾燙的身子正盤算著如何讓你墜入深淵，或許是注意到你會支撐好兩人的重量，他將手放到了愛晴射了不少的堅挺上，上下搓揉著敏感處，似乎打算要讓你先投降。</dd></dl>
+	<dl class="tc1 nc3"><dt>生川 愛晴</dt><dd>你驚慌的回應反而使他更加興奮，扭動的幅度因而增添些許玩弄的意味，越來越進入狀況的他用著恢復得當的體力，不斷用肉壁刺激你敏感的尖端，唇舌也回應你的反擊，不斷挑逗著。<br><br>要是今天在他身上的人是你，他一定會看在你快虛脫的份上而自己解決，但既然現在被貫穿的人是自己，尚有餘裕的他便不打算手下留情，坦然地滿足自己的慾望，奪走你的精力與氧氣，把一切都吞吃入腹。<br><br>「沒力了？」脣舌相離，勾出一道色情的銀絲，他在喘息的空檔如此明知故問，看著你只能一次次承受刺激，他的臉上掛著得意無比的笑容。然而當你柔軟的雙手也跟著包覆自己的硬物，模仿交合而開始上下套弄，戲謔的表情很快收斂起來，蹙起眉頭，強壓下跟著高漲的慾望。<br><br>他像是報復，又像是要把剛剛錯過的全都補回來一般，伸手將你的身軀緊緊禁錮在懷裡，使你無法動彈，也讓他能更好地含入你的東西。他先是跪坐著直起身子，讓你的硬挺滑出體內，再使出不輸於稍早的力氣，配合引力重重落下，深深地含入你整根莖柱。浴室瞬間迴盪響亮的水聲，他低喘著氣，不斷挑釁你的身體，開始逐漸失控的角力。</dd></dl>
+	<dl class="tc1 nc2"><dt>桃樂亭 芳司</dt><dd>「哎呀……生川先生是在說自己嗎？」明明剛才還惺惺相惜的唇舌，吐出的話卻有些針鋒相對，望著得意的微笑，他也不甘於下風的勉強勾起嘴角，試圖掩飾受到刺激的喘息，而注意到你的表情變化，心中湧上了滿足感，使他專注逗弄手上動作，嘗試將注意力從下身移開，導致他意識到你接下來的動作時已經為時已晚。<br><br>「啊啊啊啊！」重量加上愛液的潤滑，使得他的堅挺很輕易的就頂到了最深處，刺激瞬間像爆炸般在全身散開，電流串過了全身，他忍不住吟叫出聲喘著粗氣，沒能撐過一次又一次的挑釁，只能被動的推至最高潮，顫抖著將炙熱的白濁毫不保留的被榨出，灌進了深處，新一輪的熱意把裏頭的其他異物擠出，染上了屬於自己的氣味。<br><br>手上的動作也因為身體的顫動而下意識加重力道，十指像是要把把愛晴榨乾，緊緊擠壓著柱身，爾後才隨著高潮過後的喘息逐漸鬆開，此時的芳司也失了神，孱弱的身體只能依靠對方，整個人頭癱軟在愛晴肩頸旁吐著熱氣，身旁的水的漣漪才漸漸地平緩下來。</dd></dl>
+	<dl class="tc1 nc3"><dt>生川 愛晴</dt><dd>比起體內受到的刺激，你情色的喊叫才更讓他感到下腹一緊。在熱液灌入自己的瞬間，被緊握住的硬挺跟著跳動，下一秒他人也彷彿像觸電一樣來到高潮。仰頭呻吟著將頂端插入你的指縫，因為過緊而產生自己也正在肏弄你的錯覺，同時也猛烈收縮著甬道，將屬於自己的東西狠狠咬緊，吞入榨取出的熱度到深處。<br><br>今晚的第數次釋放，已經讓他幾乎沒有東西可以射出，堅硬的頂端微微地吐出幾滴透明的水，在你的手裡跳動。再度迸發的他幾乎要失去意識，但仍照著本能緊緊擁住你無力的身子，支撐兩人的重量。<br><br>「哈啊⋯⋯剛剛是做了幾次啊⋯⋯」直到緩過呼吸，他才沙啞地自語道。雖然對他而言只做了一次，沉重不已的身體卻讓他感覺像打了一場械鬥，而同樣都是把人打倒，這次他似乎也贏了，只是用的部位不同。</dd></dl>
+	<dl class="tc1 nc1"><dt>KP赤Seki</dt><dd>時間為，《凌晨3點41分》<br><br>無力的你們在浴缸溫存了一段時間，直到恢復能站起身的氣力，才一起從浴缸裡出來，用肌膚與氣息感受著夏日的清晨空氣。<br><br>剛迎來陽光的室內依舊很黑，卻又處於不必開燈的絕妙昏暗之中。你們又簡單沐浴了一次，將自己身上精彩的痕跡沖洗乾淨，其中也包含你留在愛晴體內的濁液。<br><br>突然，你的視線落在自己的右手上，發現那枚金色戒指已經在不知不覺間滑落，輕而無聲地留在了浴室的某個角落。</dd></dl>
+	<dl class="tc1 nc3"><dt>生川 愛晴</dt><dd>「我要弄點吃的，你呢？」</dd></dl>
+	<dl class="tc1 nc2"><dt>桃樂亭 芳司</dt><dd>「我跟生川先生一起弄吧。」芳司雖然有些疲憊地整理好儀容，但連食物管控都嚴格把關的他，還是走到了你的身旁，似乎打算連你的份也一起調理。</dd></dl>
+	<p class="tc0 tab"><span>雑談</span></p>
+	<dl class="tc0 nc0"><dt>布炵</dt><dd>（聽到風鈴就大尖叫（幹</dd></dl>
+	<p class="tc1 tab"><span>メイン</span></p>
+	<dl class="tc1 nc3"><dt>生川 愛晴</dt><dd>「恩。都這個時間了，乾脆當早餐吃吧。」拉好身上的浴衣，他沒有拒絕你的協助，緩步踏向了廚房。歷經了長時間的運動，雖然心靈已經相當滿足，但失去大量熱量的身體卻餓得要命。</dd></dl>
+	<dl class="tc1 nc1"><dt>KP赤Seki</dt><dd>愛晴打算烤個能好好填飽肚子的飯糰，而你在冰箱找到了雞蛋，做成玉子燒是再適合不過的吧。搭配涼拌菜與麥茶，還能增添些許夏日風情，在微亮的夜色一起共享讓身體徹底放鬆的家常料理。</dd></dl>
+	<dl class="tc1 nc3"><dt>生川 愛晴</dt><dd>「話說回來，現在已經是星期六了吧。時間太早了，總覺得哪裡怪怪的。」他邊吃著早餐，邊跟你有一句沒一句地閒聊。</dd></dl>
+	<dl class="tc1 nc2"><dt>桃樂亭 芳司</dt><dd>「早餐……已經這個時間了呢。」他看了一眼手機時間，沒想到兩人會溫存這麼長時間，肚子經歷刺激過後，才慢半拍的蠕動，提醒著他進食。<br><br>「那我們等等吃完就回房再休息一下吧。」似乎決定要待在愛晴家，他邊說著他小口咀嚼著涼拌菜，帶著困意的眼淚也緩緩地點綴在眼角，似乎等等就會整個人斷線了。</dd></dl>
+	<dl class="tc1 nc3"><dt>生川 愛晴</dt><dd>「恩。」根據往常的習慣，他同樣認為你會待在這裡過夜，對兩人而言，這就像是不必明說的默契，他也沒有像早些時候那樣擔心你離開。</dd></dl>
+	<dl class="tc1 nc1"><dt>KP赤Seki</dt><dd>你們緩緩地享用完早餐，過於疲憊的你難得聽了一次愛晴的建議，又或是屈服於沈重的睡意，決定將碗盤留給起床後的自己處理。回到房間的你們在榻榻米上鋪好了兩張被褥，互道晚安。</dd></dl>
+	<dl class="tc1 nc1"><dt>KP赤Seki</dt><dd>在風鈴清脆的聲響下，你漸漸陷入夢鄉，恍惚之間，或許會感覺到屬於愛晴的氣味竄入你的懷中，為你增添暖意。</dd></dl>
+	<dl class="tc1 nc1"><dt>KP赤Seki</dt><dd>日本一年當中日出最早的時期，據說是盛夏的6月至7月初旬。現在這個瞬間，正是迎接最早晨光的時刻。</dd></dl>
+	<dl class="tc1 nc1"><dt>KP赤Seki</dt><dd>時間為，《凌晨4點》<br><br>朝陽升起，迎來破曉，此時可說是夜與晝的交界，而在你們共度漫漫長夜之後，你的心中湧現了什麼感受呢。<br><br>兩人共浴的浴缸、昏暗密室中炙熱的交纏，以及與他互相留下名為痕跡的證明。<br>本該只是兩人尋常的日子，卻帶著些許非日常的搔癢感，令人感到不可思議。但只要與他相伴，就算是非日常也能感到歡愉，平靜與溫暖。<br><br>所以，稱呼這個平凡無奇的房間為理想鄉，也不為過吧。</dd></dl>
+	<dl class="tc1 nc1"><dt>KP赤Seki</dt><dd>凌晨4點、於理想鄉。<br>那裡如同往常，有兩人溫存著。</dd></dl>
+	<dl class="tc1 nc1"><dt>KP赤Seki</dt><dd>克蘇魯神話TRPG「凌晨4點、於理想鄉」<br><br>END2-A「只屬於我們的理想鄉」<br><br>報酬	SAN回復 1D10<br>兩人共度夜晚 1D2<br><br>●後遺症	吻痕會留下1D7天</dd></dl>
+	<dl class="tc1 nc2"><dt>桃樂亭 芳司</dt><dd>1d10 (1D10) ＞ 4</dd></dl>
+	<dl class="tc1 nc2"><dt>桃樂亭 芳司</dt><dd>1d2 (1D2) ＞ 1</dd></dl>
+	<dl class="tc1 nc2"><dt>桃樂亭 芳司</dt><dd>1d7 (1D7) ＞ 4</dd></dl>
+	<dl class="tc1 nc2"><dt>桃樂亭 芳司</dt><dd class="SU">CCB&lt;=72 &lt;聆聽&gt; (1D100&lt;=72) ＞ 45 ＞ 成功</dd></dl>
+	<dl class="tc1 nc3"><dt>生川 愛晴</dt><dd>1d10+1d2 (1D10+1D2) ＞ 4[4]+1[1] ＞ 5</dd></dl>
+	<dl class="tc1 nc3"><dt>生川 愛晴</dt><dd>1d7 (1D7) ＞ 5</dd></dl>
+	<p class="tc4 tab"><span>背景</span></p>
+	<dl class="tc4 nc1"><dt>KP赤Seki</dt><dd>■劇本背景<br>魔術師・水無月被連日的酷暑折磨得受不了。<br>「對了。召喚魯利姆・夏科洛斯來降溫吧♪」<br>於是隨心所欲的他，在深夜的街道召喚出魯利姆・夏科洛斯（馬雷烏斯擴充規則書 p.257）。<br>剛好在此時，回家途中的KPC目擊了魯利姆・夏科洛斯被招來的瞬間，陷入「不定期瘋狂・戀物癖」的症狀之中。<br>接著對自己重視的PC產生執念，撥打了求助電話。<br>水無月如同前文所述，是個反覆無常的人。<br>他放棄在車站搭訕的PC，轉而對跟PC相當要好的KPC施展「精神從屬（基本規則書 p.266）」的咒語，企圖將他占為己有。<br>PC為了取回與KPC的日常，將度過這個不可思議的夏夜。<br><br><br>■關於KPC的適性<br>不論何種形式，只要KPC懷抱對PC的獨佔欲，就適合遊玩此劇本。<br>無論是平時會在PC面前表現出來、隱藏起來、無意識地獨佔等都可以，總之必須是真實的情感，這是唯一的條件。<br><br>此劇本的高潮處，將出現KPC因為獨佔欲而在PC身上留下吻痕的發展。<br><br>之所以在高潮處讓KPC留下吻痕，是因為在浴缸中的所有對話結束後，水無月會在KPC腦中吐露出侮辱PC的話語，並低語誘導其將好感轉向自己。<br>為了向水無月展示主權，KPC才在PC身上留下吻痕作為證明。無論他人怎麼想，PC都是屬於自己的東西，而自己也是PC的東西。<br><br>希望通過這個劇本之後，即使在回歸正常的非日常中增加了些微變化（浴缸中的對話或KPC留下的吻痕等），兩位探索者也能將其當作一種日常，而珍愛彼此就好了。</dd></dl>
+	<dl class="tc4 nc1"><dt>KP赤Seki</dt><dd>■NPC<br>水無月（みなづき）<br>性別：男／年齡：不明／容貌：20歲後半<br><br>凡事都隨心所欲的魔術師。把魯利姆・夏科洛斯召喚來的始作俑者。若有任何事情不順自己的意，就會感到不滿。<br>到了夏天就討厭夏天。到了冬天又討厭冬天。<br><br>名字的由來是6月的和風月名。<br>因為劇本的舞台是7月，所以有「6月（水無月）不會出場」的含意。</dd></dl>
+	<p class="tc1 tab"><span>メイン</span></p>
+	<dl class="tc1 nc7"><dt>system</dt><dd>[ 生川 愛晴 ] SAN : 34 → 39</dd></dl>
+
+</section>
+</main>
+<footer><a href="https://box.tetronomo.com/ccfc/" target="_blank">CCFOLIAログコンバータ Ver1.30</a></footer>
+<script type="text/javascript">
+const tab = [];
+const name = [];
+const trigger = document.querySelectorAll(".select_t");
+trigger.forEach(function(target) {
+	target.addEventListener('change', function() {
+		const classname = target.id;
+		const id = classname.split("tc");
+		tab[id[1]] = target.checked ? '' : 'none';
+		const tid = tab[id[1]];
+		const arr = document.querySelectorAll("." + classname);
+		arr.forEach(function(value) {
+			const string = value.className;
+			let temp = "";
+			let nid = "";
+			if(string.match('nc')) {
+				temp = string.split("nc");
+				nid = temp[1].substring(0,1);
+			}
+			if(tid == 'none') {
+				value.style.display = 'none';
+			} else {
+				if(name[nid] == 'none') {
+					value.style.display = 'none';
+				} else {
+					value.style.display = '';
+				}
+			}
+		});
+	});
+});
+const triggern = document.querySelectorAll(".select_n");
+triggern.forEach(function(target) {
+	target.addEventListener('change', function() {
+		const classname = target.id;
+		const id = classname.split("nc");
+		name[id[1]] = target.checked ? '' : 'none';
+		const nid = name[id[1]];
+		const arr = document.querySelectorAll("." + classname);
+		arr.forEach(function(value) {
+			const string = value.className;
+			const temp = string.split("tc");
+			const tid = temp[1].substring(0,1);
+			if(tab[tid] == 'none') {
+				value.style.display = 'none';
+			} else {
+				if(nid == 'none') {
+					value.style.display = 'none';
+				} else {
+					value.style.display = '';
+				}
+			}
+		});
+	});
+});
+</script>
+</body>
+</html>
